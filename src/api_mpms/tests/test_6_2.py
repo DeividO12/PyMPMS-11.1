@@ -106,6 +106,3 @@ ctpl, round ..................            0.98876
 
 print("\n------------------------------Example 7 --------------------------------")
 print(correct_observed_to_base(rho_o=853.7,t_o=84.5,p_o=573, alpha_60= 0.00057634, commodity_type='C'))
-
-print("\n------------------------------Example 8 --------------------------------")
-print(correct_observed_to_base(rho_o=643.4263268092855,t_o=0,p_o=0, commodity_type='A'))

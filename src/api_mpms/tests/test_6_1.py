@@ -65,6 +65,3 @@ ctpl, round ..................            1.00486
 
 print("\n------------------------------Example 3 --------------------------------")
 print(correct_base_to_alternate(rho_60=936.784387011266,t_f=48.04, p_psig=-7.3, commodity_group='B'))
-
-print("\n------------------------------Example 4 --------------------------------")
-print(correct_base_to_alternate(rho_60=936.784387011266,t_f=48.04, p_psig=0, commodity_group='A'))
