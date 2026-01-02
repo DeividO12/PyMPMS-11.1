@@ -1,0 +1,2 @@
+class MPMSConvergenceError(RuntimeError):
+    pass
