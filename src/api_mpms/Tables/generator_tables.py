@@ -339,12 +339,3 @@ def generar_tabla_23a():
     df.to_csv("Tabla_23A.csv")
     print("Tabla 23A generada exitosamente en 'Tabla_23A.csv'")
     return df
-
-if __name__ == "__main__":
-    df_5a = generar_tabla_5a()
-    df_5b = generar_tabla_5b()
-    df_5d = generar_tabla_5d()
-    df_6a = generar_tabla_6a()
-    df_6b = generar_tabla_6b()
-    df_6d = generar_tabla_6d()
-    df_23a = generar_tabla_23a()

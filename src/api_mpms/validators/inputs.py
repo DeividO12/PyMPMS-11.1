@@ -1,6 +1,6 @@
 # api_mpms/validators/inputs.py
 
-from exceptions.validation import MPMSValidationError
+from api_mpms.exceptions.validation import MPMSValidationError
 
 
 def validate_temperature_f(t: float):

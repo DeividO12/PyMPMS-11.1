@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pympms-11-1"
+version = "0.1.0"
+description = "Python implementation of API MPMS Chapter 11.1 for petroleum measurement"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+
+authors = [
+  { name = "Deivid Cubillos" }
+]
+
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+  "Topic :: Scientific/Engineering"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

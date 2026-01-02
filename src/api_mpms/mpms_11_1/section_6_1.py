@@ -3,17 +3,17 @@
 import math
 from typing import Optional, Tuple
 
-from constants.commodity_groups import (
+from api_mpms.constants.commodity_groups import (
     COMMODITY_GROUPS,
     resolve_commodity_group,
 )
-from exceptions.validation import MPMSValidationError
-from validators.inputs import (
+from api_mpms.exceptions.validation import MPMSValidationError
+from api_mpms.validators.inputs import (
     validate_temperature_f,
     validate_pressure_psig,
 )
 
-from mpms_11_1.section_5_3 import its90_to_ipts68
+from api_mpms.mpms_11_1.section_5_3 import its90_to_ipts68
 
 
 DELTA_60 = 0.01374979547

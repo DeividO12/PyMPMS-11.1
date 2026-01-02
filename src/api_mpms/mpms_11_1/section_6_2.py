@@ -2,11 +2,11 @@
 
 from typing import Optional, Tuple
 
-from mpms_11_1.section_6_1 import correct_base_to_alternate
-from constants.iteration_coefficients import da_coefficient
-from exceptions.validation import MPMSValidationError
-from exceptions.convergence import MPMSConvergenceError
-from validators.inputs import (
+from api_mpms.mpms_11_1.section_6_1 import correct_base_to_alternate
+from api_mpms.constants.iteration_coefficients import da_coefficient
+from api_mpms.exceptions.validation import MPMSValidationError
+from api_mpms.exceptions.convergence import MPMSConvergenceError
+from api_mpms.validators.inputs import (
     validate_temperature_f,
     validate_pressure_psig,
 )

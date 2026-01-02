@@ -1,7 +1,7 @@
 # api_mpms/constants/commodity_groups.py
 
 from dataclasses import dataclass
-from exceptions.validation import MPMSValidationError
+from api_mpms.exceptions.validation import MPMSValidationError
 
 
 @dataclass(frozen=True)

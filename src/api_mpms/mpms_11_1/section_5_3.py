@@ -1,7 +1,7 @@
 # api_mpms/mpms_11_1/section_5_3.py
 
 from typing import Optional
-from exceptions.validation import MPMSValidationError
+from api_mpms.exceptions.validation import MPMSValidationError
 
 
 # API MPMS 11.1 – Table 5.3
