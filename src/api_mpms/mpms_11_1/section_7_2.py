@@ -32,5 +32,3 @@ def correct_observed_to_base_C(
     CTPL = CTL * CPL
     
     return rho_60, CTL, Fp_psi, CPL, CTPL
-
-print(correct_observed_to_base_C(rho_o=853.7, t_o=84.524, p_o=57.2899088394, t_b=15,commodity_type='C', alpha_60=0.0005763))

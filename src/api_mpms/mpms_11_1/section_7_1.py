@@ -5,7 +5,7 @@ from api_mpms.mpms_11_1.section_5_1 import celc_to_fahr
 from api_mpms.mpms_11_1.section_6_2 import correct_observed_to_base
 from api_mpms.mpms_11_1.section_6_1 import correct_base_to_alternate
 
-def correct_observed_to_alternate(
+def correct_observed_to_alternate_C(
     *,
     rho_t: float,
     t_a: float,
