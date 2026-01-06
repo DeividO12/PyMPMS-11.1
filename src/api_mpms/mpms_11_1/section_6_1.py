@@ -78,19 +78,23 @@ def correct_base_to_alternate(
     )
     CTL = math.exp(ctl_exp)
 
-    # Step 6 – Fp
-    fp = math.exp(
-        -1.9947
-        + 0.00013427 * t_ipts68
-        + (793920.0 + 2326.0 * t_ipts68) / rho_68**2
-    )
+    if rho_60 <= 0:
+        fp = 0.0
+        CPL = 1.0
+    else:
+        # Step 6 – Fp
+        fp = math.exp(
+            -1.9947
+            + 0.00013427 * t_ipts68
+            + (793920.0 + 2326.0 * t_ipts68) / rho_68**2
+        )
 
-    # Step 7 – CPL
-    denom = 1.0 - 1.0e-5 * fp * p_psig
-    if denom <= 0:
-        raise MPMSValidationError("Invalid CPL denominator")
+        # Step 7 – CPL
+        denom = 1.0 - 1.0e-5 * fp * p_psig
+        if denom <= 0:
+            raise MPMSValidationError("Invalid CPL denominator")
 
-    CPL = 1.0 / denom
+        CPL = 1.0 / denom
 
     CTPL = CTL * CPL
 
