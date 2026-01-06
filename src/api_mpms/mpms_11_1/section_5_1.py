@@ -32,3 +32,7 @@ def gamma_t_to_rho(gamma_t:float):
 def rho_to_gamma_t(rho: float):
     gamma_t = rho/999.016
     return gamma_t
+
+def celc_to_fahr(celc: float):
+    fahr = (1.8 * celc) + 32
+    return fahr
