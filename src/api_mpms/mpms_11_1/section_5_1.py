@@ -36,3 +36,7 @@ def rho_to_gamma_t(rho: float):
 def celc_to_fahr(celc: float):
     fahr = (1.8 * celc) + 32
     return fahr
+
+def alphac_to_alphaf(alpha_c):
+    alpha_f = alpha_c/1.8
+    return alpha_f
