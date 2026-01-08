@@ -1,7 +1,6 @@
 from typing import Tuple
-from api_mpms.mpms_11_1.section_5_1 import gamma_t_to_rho, rho_to_gamma_t
+from api_mpms.mpms_11_1.section_5_1 import gamma_t_to_rho
 from api_mpms.mpms_11_1.section_5_4 import api_round
-from api_mpms.mpms_11_1.section_6_2 import correct_observed_to_base
 from api_mpms.mpms_11_1.section_6_1 import correct_base_to_alternate
 
 def table_24x(
