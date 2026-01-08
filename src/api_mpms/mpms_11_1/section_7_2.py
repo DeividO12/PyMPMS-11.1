@@ -18,7 +18,7 @@ def correct_observed_to_base_C(
     API MPMS 11.1.6.2
 
     Returns:
-        rho_60, CTL, Fp_psi, CPL, CTPL
+        rho, rho_60, CTL, Fp_psi, CPL, CTPL
     """
     
     t_b_F = celc_to_fahr(t_b)
@@ -26,11 +26,11 @@ def correct_observed_to_base_C(
     alpha_60_f = alphac_to_alphaf(alpha_60_c) if alpha_60_c else None
     
     rho_60, CTL_o, Fp_o, CPL_o, CTPL_o = correct_observed_to_base(rho_o=rho_o, t_o=t_o_f, p_o=p_o,commodity_type=commodity_type, alpha_60=alpha_60_f)
-    CTL_60, fp_60, CPL_60, CTPL_60, alpha_60 = correct_base_to_alternate(rho_60=rho_60, t_f=t_b_F, p_psig=0, commodity_group=commodity_type, alpha_60=alpha_60_f)
+    rho, CTL_60, fp_60, CPL_60, CTPL_60, alpha_60 = correct_base_to_alternate(rho_60=rho_60, t_f=t_b_F, p_psig=0, commodity_group=commodity_type, alpha_60=alpha_60_f)
     
     CTL = CTL_o / CTL_60
     Fp_psi = Fp_o
     CPL = CPL_o
     CTPL = CTL * CPL
     
-    return rho_60, CTL, Fp_psi, CPL, CTPL
+    return rho, rho_60, CTL, Fp_psi, CPL, CTPL

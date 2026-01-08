@@ -26,7 +26,7 @@ def correct_observed_to_alternate_C(
     alpha_60_f = alphac_to_alphaf(alpha_60_c) if alpha_60_c else None
     
     rho_60, CTL_60, _, _, _ = correct_observed_to_base(rho_o=rho_t, t_o=t_b_F, p_o=0,commodity_type=commodity_type, alpha_60=alpha_60_f)
-    CTL_a, fp_a, CPL_a, CTPL_a, alpha_60_a = correct_base_to_alternate(rho_60=rho_60, t_f=t_a_F, p_psig=p_a, commodity_group=commodity_type, alpha_60=alpha_60_f)
+    rho, CTL_a, fp_a, CPL_a, CTPL_a, alpha_60_a = correct_base_to_alternate(rho_60=rho_60, t_f=t_a_F, p_psig=p_a, commodity_group=commodity_type, alpha_60=alpha_60_f)
     
     CTL = CTL_a / CTL_60
     Fp_psi = fp_a

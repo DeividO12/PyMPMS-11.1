@@ -180,7 +180,7 @@ def generar_tabla_6a():
             # Paso 5: Determinar densidad base (rho_60)
             # Usar tu función: correct_observed_to_base
             try:
-                CTL_60, _, _, _, _ = correct_base_to_alternate(
+                _,CTL_60, _, _, _, _ = correct_base_to_alternate(
                     rho_60=rho_60, t_f=t_obs, p_psig=p_o, commodity_group=commodity_group
                 )
                 CTL_60 = api_round(CTL_60, 0.00001)
@@ -227,7 +227,7 @@ def generar_tabla_6b():
             # Paso 5: Determinar densidad base (rho_60)
             # Usar tu función: correct_observed_to_base
             try:
-                CTL_60, _, _, _, _ = correct_base_to_alternate(
+                _,CTL_60, _, _, _, _ = correct_base_to_alternate(
                     rho_60=rho_60, t_f=t_obs, p_psig=p_o, commodity_group=commodity_group
                 )
                 CTL_60 = api_round(CTL_60, 0.00001)
@@ -273,7 +273,7 @@ def generar_tabla_6d():
             # Paso 5: Determinar densidad base (rho_60)
             # Usar tu función: correct_observed_to_base
             try:
-                CTL_60, _, _, _, _ = correct_base_to_alternate(
+                _,CTL_60, _, _, _, _ = correct_base_to_alternate(
                     rho_60=rho_60, t_f=t_obs, p_psig=p_o, commodity_group=commodity_group
                 )
                 CTL_60 = api_round(CTL_60, 0.00001)

@@ -58,16 +58,15 @@ def correct_observed_to_base(
 
     for m in range(_MAX_ITER):
         
-        CTL, Fp, CPL, CTPL, alpha_iter = correct_base_to_alternate(
+        rho, CTL, Fp, CPL, CTPL, alpha_iter = correct_base_to_alternate(
             rho_60=rho_60,
             t_f=t_o,
             p_psig=p_o,
             commodity_group=commodity_type,
             alpha_60=alpha_60,
         )
-
-        rho_calc = rho_60 * CTPL
-        delta_rho_o = rho_o - rho_calc
+        
+        delta_rho_o = rho_o - rho
 
         if abs(delta_rho_o) < _RHO_TOL:
             return rho_60, CTL, Fp, CPL, CTPL

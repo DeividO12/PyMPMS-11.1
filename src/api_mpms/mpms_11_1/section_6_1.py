@@ -34,7 +34,7 @@ def correct_base_to_alternate(
     to alternate temperature and pressure.
 
     Returns:
-        CTL, Fp, CPL, CTPL, alpha_60
+        rho, CTL, Fp, CPL, CTPL, alpha_60
     """
 
     validate_temperature_f(t_f)
@@ -97,5 +97,6 @@ def correct_base_to_alternate(
         CPL = 1.0 / denom
 
     CTPL = CTL * CPL
+    rho = CTPL * rho_60
 
-    return CTL, fp, CPL, CTPL, alpha_60
+    return rho, CTL, fp, CPL, CTPL, alpha_60
