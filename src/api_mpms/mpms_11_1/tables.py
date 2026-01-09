@@ -18,6 +18,8 @@ def table_6x(
     Returns:
         CTL
     """
+    api_base = api_round(api_base, 0.1)
+    t_f_obs = api_round(t_f_obs,0.1)
     
     rho_base = API_to_rho(api_base)
     
@@ -38,6 +40,8 @@ def table_5x_6x(
     Returns:
         CTL
     """
+    api_obs = api_round(api_obs,0.1)
+    t_f_obs = api_round(t_f_obs,0.1)
     rho_obs = API_to_rho(api_obs)
     
     rho_60, _, _, _, _ = correct_observed_to_base(rho_o=rho_obs, t_o=t_f_obs, p_o=0, commodity_type=commodity_type)
@@ -62,6 +66,7 @@ def table_6c_24c(
         CTL
     """
     commodity_type = 'C'
+    t_f_obs = api_round(t_f_obs,0.1)
     
     _, CTL, _, _, _, _ = correct_base_to_alternate(rho_60=0, t_f=t_f_obs,p_psig=0,commodity_group=commodity_type, alpha_60=alpha_obs)
 
@@ -81,6 +86,8 @@ def table_24x(
     Returns:
         CTL
     """
+    rel_base = api_round(rel_base,0.0001)
+    t_f_obs = api_round(t_f_obs,0.1)
     rho_base = gamma_t_to_rho(rel_base)
     
     _, CTL, _, _, _, _ = correct_base_to_alternate(rho_60=rho_base, t_f=t_f_obs,p_psig=0,commodity_group=commodity_type)
@@ -101,6 +108,8 @@ def table_23x_24x(
     Returns:
         CTL
     """
+    rel_obs = api_round(rel_obs,0.0001)
+    t_f_obs = api_round(t_f_obs,0.1)
     rho_obs = gamma_t_to_rho(rel_obs)
     
     rho_60, _, _, _, _ = correct_observed_to_base(rho_o=rho_obs, t_o=t_f_obs, p_o=0, commodity_type=commodity_type)
@@ -125,6 +134,8 @@ def table_54x(
     Returns:
         CTL
     """
+    den_base = api_round(den_base,0.1)
+    t_c_obs = api_round(t_c_obs,0.05)
 
     _, CTL, _, _, _ = correct_observed_to_alternate_C(rho_t=den_base, t_a_c=t_c_obs, p_a=0, t_b=15,commodity_type=commodity_type)
 
@@ -144,6 +155,7 @@ def table_54c(
         CTL
     """
     commodity_type = 'C'
+    t_c_obs = api_round(t_c_obs,0.05)
 
     _, CTL, _, _, _ = correct_observed_to_alternate_C(rho_t=0, t_a_c=t_c_obs, p_a=0, t_b=15,commodity_type=commodity_type, alpha_60_c=alpa_obs)
 
@@ -163,6 +175,8 @@ def table_53x_54x(
     Returns:
         CTL
     """
+    den_obs = api_round(den_obs,0.1)
+    t_c_obs = api_round(t_c_obs,0.05)
     
     rho, _, _, _, _, _ = correct_observed_to_base_C(rho_o=den_obs, t_o_c=t_c_obs, p_o=0,t_b=15, commodity_type=commodity_type)
     rho = api_round(rho, 0.1)
@@ -185,6 +199,8 @@ def table_60x(
     Returns:
         CTL
     """
+    den_base = api_round(den_base,0.1)
+    t_c_obs = api_round(t_c_obs,0.05)
 
     _, CTL, _, _, _ = correct_observed_to_alternate_C(rho_t=den_base, t_a_c=t_c_obs, p_a=0, t_b=20,commodity_type=commodity_type)
 
@@ -204,6 +220,7 @@ def table_60c(
         CTL
     """
     commodity_type = 'C'
+    t_c_obs = api_round(t_c_obs,0.05)
 
     _, CTL, _, _, _ = correct_observed_to_alternate_C(rho_t=0, t_a_c=t_c_obs, p_a=0, t_b=20,commodity_type=commodity_type, alpha_60_c=alpa_obs)
 
@@ -223,6 +240,8 @@ def table_59x_60x(
     Returns:
         CTL
     """
+    den_obs = api_round(den_obs,0.1)
+    t_c_obs = api_round(t_c_obs,0.05)
     
     rho, _, _, _, _, _ = correct_observed_to_base_C(rho_o=den_obs, t_o_c=t_c_obs, p_o=0,t_b=20, commodity_type=commodity_type)
     rho = api_round(rho, 0.1)
