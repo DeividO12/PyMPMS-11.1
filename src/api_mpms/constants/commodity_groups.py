@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from typing import Dict, Tuple
 
 from api_mpms.constants.commodity_types import CommodityType
+from api_mpms.exceptions.validation import MPMSRangeError
 
 
 @dataclass(frozen=True)
@@ -42,21 +43,30 @@ COMMODITY_TYPE_BOUNDS: Dict[CommodityType, Tuple[float, float]] = {
 }
 
 
+# Límites de densidad observada por tipo (11.1.6.2 Paso 1, pág. 57)
+OBSERVED_DENSITY_BOUNDS: Dict[CommodityType, Tuple[float, float]] = {
+    CommodityType.CRUDE_OIL: (470.5, 1201.8),
+    CommodityType.REFINED_PRODUCTS: (470.4, 1209.5),
+    CommodityType.LUBRICATING_OILS: (714.3, 1208.3),
+}
+
+
 def resolve_commodity_group(rho: float, commodity_type: CommodityType) -> CommodityGroup:
     """
-    Resuelve el grupo de producto según la densidad base y el tipo (A, B, D).
+    Subgrupo de producto según la densidad base (tablas K y Da, págs. 41 y 58).
 
-    Si la densidad queda fuera de los rangos del tipo se devuelve el grupo
-    más cercano por distancia al borde.
+    Los intervalos son [min, max), salvo el extremo superior del tipo
+    (1163.5 kg/m³: fuel oils, crudo, lubricantes), que es inclusivo.
+    Fuera del rango del tipo lanza MPMSRangeError: la norma no extrapola.
     """
     groups = COMMODITY_TYPE_GROUPS[commodity_type]
     for g in groups:
         if g.rho_min <= rho < g.rho_max:
             return g
-
-    def distance(g: CommodityGroup) -> float:
-        if rho < g.rho_min:
-            return g.rho_min - rho
-        return rho - g.rho_max
-
-    return min(groups, key=distance)
+    if rho == groups[-1].rho_max:
+        return groups[-1]
+    rho_min, rho_max = COMMODITY_TYPE_BOUNDS[commodity_type]
+    raise MPMSRangeError(
+        f"rho_60 {rho} kg/m³ out of range for commodity type "
+        f"{commodity_type.value.upper()} ({rho_min} to {rho_max})"
+    )

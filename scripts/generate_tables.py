@@ -142,7 +142,9 @@ def generate_table(spec: TableSpec, out_dir: Path, workers: int = 1) -> Path:
 
 
 def main(argv=None) -> None:
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     parser.add_argument("tables", nargs="*", help="Tablas a generar (p. ej. 5A 6B 54C)")
     parser.add_argument("--out-dir", type=Path, default=Path("tablas"))
     parser.add_argument("--workers", type=int, default=os.cpu_count() or 1)
@@ -152,7 +154,8 @@ def main(argv=None) -> None:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
     if args.list or not args.tables:
         for spec in SPECS.values():
-            print(f"{spec.name:>4}  {spec.function}  {len(spec.columns.values())} × {len(spec.temps.values())}")
+            n_cols, n_temps = len(spec.columns.values()), len(spec.temps.values())
+            print(f"{spec.name:>4}  {spec.function}  {n_cols} x {n_temps}")
         return
     unknown = [t for t in args.tables if t.upper() not in SPECS]
     if unknown:

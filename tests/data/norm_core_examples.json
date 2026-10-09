@@ -1,0 +1,2529 @@
+[
+ {
+  "id": "6.1-ej1",
+  "section": "11.1.6.1",
+  "page": 44,
+  "inputs": {
+   "commodity": "A",
+   "api_60": 17.785,
+   "rho_60": 946.918739324112,
+   "t_f": -27.7,
+   "p_psig": 0,
+   "volume": 987.99
+  },
+  "expected": {
+   "t_star": -27.712499233089,
+   "rho_star": 946.921215770785,
+   "alpha_60": 0.000380407044,
+   "delta_t": -87.719374133089,
+   "ctl": 1.033011591958,
+   "fp": 0.305779891997,
+   "cpl": 1.0,
+   "ctpl": 1.033011591958,
+   "ctpl_rounded": 1.03301,
+   "rho": 978.178034364,
+   "volume_base": 1020.6035499
+  },
+  "notes": "",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.1-ej2",
+  "section": "11.1.6.1",
+  "page": 45,
+  "inputs": {
+   "commodity": "A",
+   "api_60": -10,
+   "rho_60": 1163.4630781893,
+   "t_f": 301.93,
+   "p_psig": 1500,
+   "volume": 285.5
+  },
+  "expected": {
+   "t_star": 301.993163042978,
+   "rho_star": 1163.46509372,
+   "alpha_60": 0.000251982006,
+   "delta_t": 241.986288142978,
+   "ctl": 0.938051116886,
+   "fp": 0.427958509999,
+   "cpl": 1.006460852301,
+   "ctpl": 0.944111726603,
+   "ctpl_rounded": 0.94411,
+   "rho": 1098.4391355882,
+   "volume_base": 269.543405
+  },
+  "notes": "",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.1-ej3",
+  "section": "11.1.6.1",
+  "page": 46,
+  "inputs": {
+   "commodity": "B",
+   "api_60": 19.4,
+   "rho_60": 936.784387011266,
+   "t_f": 48.04,
+   "p_psig": -7.3,
+   "volume": 12002
+  },
+  "expected": {
+   "t_star": 48.043878159606,
+   "rho_star": 936.787006219757,
+   "alpha_60": 0.000406689168,
+   "delta_t": -11.962996740394,
+   "ctl": 1.00485806899,
+   "fp": 0.384339609206,
+   "cpl": 1.0,
+   "ctpl": 1.00485806899,
+   "ctpl_rounded": 1.00486,
+   "rho": 941.3353501926,
+   "volume_base": 12060.32972
+  },
+  "notes": "Presion negativa -7.3 psig: la norma la fuerza a 0 y continua. Subgrupo: fuel oil.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.1-ej4",
+  "section": "11.1.6.1",
+  "page": 47,
+  "inputs": {
+   "commodity": "B",
+   "rel_density_60": 0.7943,
+   "rho_60": 793.5184088,
+   "t_f": 85,
+   "p_psig": 247.3,
+   "volume": 1000
+  },
+  "expected": {
+   "rho_star": 793.521270459968,
+   "alpha_60": 0.000524557068,
+   "delta_t": 25.006483322928,
+   "ctl": 0.986832406683,
+   "fp": 0.664706197066,
+   "cpl": 1.001646525013,
+   "ctpl": 0.988457250925,
+   "ctpl_rounded": 0.98846,
+   "rho": 784.3590249208,
+   "volume_base": 988.46
+  },
+  "notes": "Subgrupo: jet fuel.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.1-ej5",
+  "section": "11.1.6.1",
+  "page": 48,
+  "inputs": {
+   "commodity": "B",
+   "api_60": 48.0015,
+   "rho_60": 787.518566697214,
+   "t_f": 55.9,
+   "p_psig": 350,
+   "volume": 10000
+  },
+  "expected": {
+   "t_star": 55.905838569594,
+   "rho_star": 787.521450184768,
+   "alpha_60": 0.000532585048,
+   "delta_t": -4.101036330406,
+   "ctl": 1.002182725702,
+   "fp": 0.608111538634,
+   "cpl": 1.002132930093,
+   "ctpl": 1.004320311396,
+   "ctpl_rounded": 1.00432,
+   "rho": 790.9208921357,
+   "volume_base": 10043.2
+  },
+  "notes": "Subgrupo: zona de transicion (rho_60 justo bajo 787.5195).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.1-ej6",
+  "section": "11.1.6.1",
+  "page": 49,
+  "inputs": {
+   "commodity": "B",
+   "rho_60": 657.3,
+   "t_f": 27.3,
+   "p_psig": 1234.5,
+   "volume": 14.72
+  },
+  "expected": {
+   "t_star": 27.298898616759,
+   "rho_star": 657.303689061482,
+   "alpha_60": 0.00081636213,
+   "delta_t": -32.707976283241,
+   "ctl": 1.026475833518,
+   "fp": 0.993527440282,
+   "cpl": 1.012417396817,
+   "ctpl": 1.039221991267,
+   "ctpl_rounded": 1.03922,
+   "rho": 683.0806148596,
+   "volume_base": 15.2973184
+  },
+  "notes": "Subgrupo: gasolinas.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.1-ej7",
+  "section": "11.1.6.1",
+  "page": 50,
+  "inputs": {
+   "commodity": "C",
+   "alpha_60": 0.000732185,
+   "rel_density_60": 1.0537,
+   "rho_60": 1052.6631592,
+   "t_f": 97.7,
+   "p_psig": 287.4,
+   "volume": 203.85
+  },
+  "expected": {
+   "t_star": 97.71672995169,
+   "delta_t": 37.70985505169,
+   "ctl": 0.972173795696,
+   "fp": 0.346454796729,
+   "cpl": 1.000996703515,
+   "ctpl": 0.97314276473,
+   "ctpl_rounded": 0.97314,
+   "rho": 1024.3915370787,
+   "volume_base": 198.374589
+  },
+  "notes": "Aplicacion especial (tipo C): alpha_60 dado; la densidad SI se usa para Fp (via rho*). Ultimo digito de CTPL ilegible (0.97314276473?).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.1-ej8",
+  "section": "11.1.6.1",
+  "page": 51,
+  "inputs": {
+   "commodity": "D",
+   "api_60": 42.9,
+   "rho_60": 810.554839449541,
+   "t_f": 129.3,
+   "p_psig": 138.8,
+   "volume": 99.98
+  },
+  "expected": {
+   "t_star": 129.325201088023,
+   "rho_star": 810.557237278501,
+   "alpha_60": 0.000430296571,
+   "delta_t": 69.318326188023,
+   "ctl": 0.969922293864,
+   "fp": 0.732650236105,
+   "cpl": 1.001017953704,
+   "ctpl": 0.970909629855,
+   "ctpl_rounded": 0.97091,
+   "rho": 786.9754991473,
+   "volume_base": 97.0715818
+  },
+  "notes": "",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.1-ej9",
+  "section": "11.1.6.1",
+  "page": 52,
+  "inputs": {
+   "commodity": "A",
+   "api_60": 100,
+   "rho_60": 610.629650107991,
+   "t_f": -58.05,
+   "p_psig": 0
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "Temperatura < -58 F: fuera de limites -> la norma marca error y sale (no extrapola).",
+  "tolerance": null
+ },
+ {
+  "id": "6.1-ej10",
+  "section": "11.1.6.1",
+  "page": 52,
+  "inputs": {
+   "commodity": "A",
+   "api_60": 100,
+   "rho_60": 610.629650107991,
+   "t_f": 302.05,
+   "p_psig": 0
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "Temperatura > 302 F: fuera de limites -> la norma marca error y sale (no extrapola).",
+  "tolerance": null
+ },
+ {
+  "id": "6.1-ej11",
+  "section": "11.1.6.1",
+  "page": 52,
+  "inputs": {
+   "commodity": "A",
+   "api_60": 100,
+   "rho_60": 610.629650107991,
+   "t_f": 92,
+   "p_psig": 1501
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "Presion > 1500 psi: fuera de limites -> la norma marca error y sale (no extrapola).",
+  "tolerance": null
+ },
+ {
+  "id": "6.1-ej12",
+  "section": "11.1.6.1",
+  "page": 53,
+  "inputs": {
+   "commodity": "A",
+   "api_60": 100.06,
+   "rho_60": 610.471428571429,
+   "t_f": 72,
+   "p_psig": 0
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "Densidad < 610.6 kg/m3: fuera de limites -> la norma marca error y sale (no extrapola).",
+  "tolerance": null
+ },
+ {
+  "id": "6.1-ej13",
+  "section": "11.1.6.1",
+  "page": 53,
+  "inputs": {
+   "commodity": "B",
+   "api_60": -10.08,
+   "rho_60": 1164.229649151705,
+   "t_f": 302,
+   "p_psig": 0
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "Densidad > 1163.5: fuera de limites -> error.",
+  "tolerance": null
+ },
+ {
+  "id": "6.1-ej14",
+  "section": "11.1.6.1",
+  "page": 53,
+  "inputs": {
+   "commodity": "D",
+   "api_60": 45.08,
+   "rho_60": 800.547989579794,
+   "t_f": 0,
+   "p_psig": 0
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "Densidad < 800.9 (lubricantes): fuera de limites -> error.",
+  "tolerance": null
+ },
+ {
+  "id": "6.1-ej15",
+  "section": "11.1.6.1",
+  "page": 54,
+  "inputs": {
+   "commodity": "A",
+   "api_60": 100,
+   "rho_60": 610.629650107991,
+   "t_f": 200,
+   "p_psig": 0,
+   "volume": 1000
+  },
+  "expected": {
+   "t_star": 200.043348977974,
+   "rho_star": 610.633490386188,
+   "alpha_60": 0.000914776512,
+   "delta_t": 140.036474077974,
+   "ctl": 0.868288296907,
+   "fp": 4.092820997603,
+   "cpl": 1.0,
+   "ctpl": 0.868288296907,
+   "ctpl_rounded": 0.86829,
+   "rho": 530.202578933,
+   "volume_base": 868.29
+  },
+  "notes": "Fp se calcula y reporta aunque P=0 (CPL=1).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.2-ej1",
+  "section": "11.1.6.2",
+  "page": 61,
+  "inputs": {
+   "commodity": "A",
+   "rho_o": 823.7,
+   "t_f": 80.3,
+   "p_psig": -5,
+   "volume": 1000
+  },
+  "expected": {
+   "rho_60": 832.048516184234,
+   "ctl": 0.989966310837,
+   "fp": 0.567045450015,
+   "cpl": 1.0,
+   "ctpl": 0.989966310837,
+   "ctpl_rounded": 0.98997,
+   "volume_base": 989.97,
+   "iterations": 2
+  },
+  "notes": "P negativa forzada a 0.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.2-ej2",
+  "section": "11.1.6.2",
+  "page": 62,
+  "inputs": {
+   "commodity": "A",
+   "rel_density_o": 0.72332,
+   "rho_o": 722.60825312,
+   "t_f": -57.95,
+   "p_psig": 113.5,
+   "volume": 637483
+  },
+  "expected": {
+   "rho_60": 663.445062852402,
+   "ctl": 1.08842974169,
+   "fp": 0.60343654082,
+   "cpl": 1.000685369884,
+   "ctpl": 1.089175718656,
+   "ctpl_rounded": 1.08918,
+   "volume_base": 694333.73394,
+   "iterations": 3
+  },
+  "notes": "",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.2-ej3",
+  "section": "11.1.6.2",
+  "page": 63,
+  "inputs": {
+   "commodity": "B",
+   "rel_density_o": 0.8665,
+   "rho_o": 865.647364,
+   "t_f": 68,
+   "p_psig": 11,
+   "volume": 28.45
+  },
+  "expected": {
+   "rho_60": 868.722680008428,
+   "ctl": 0.9964068147,
+   "fp": 0.484824263921,
+   "cpl": 1.000053333513,
+   "ctpl": 0.996459956576,
+   "ctpl_rounded": 0.99646,
+   "volume_base": 28.349287,
+   "iterations": 2
+  },
+  "notes": "",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.2-ej4",
+  "section": "11.1.6.2",
+  "page": 64,
+  "inputs": {
+   "commodity": "B",
+   "api_o": 41.4,
+   "rho_o": 817.586836321573,
+   "t_f": 72,
+   "p_psig": 375,
+   "volume": 200.5
+  },
+  "expected": {
+   "rho_60": 820.670624131605,
+   "ctl": 0.994103137645,
+   "fp": 0.572609969057,
+   "cpl": 1.002151908149,
+   "ctpl": 0.996242356288,
+   "ctpl_rounded": 0.99624,
+   "volume_base": 199.74612,
+   "iterations": 2
+  },
+  "notes": "",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.2-ej5",
+  "section": "11.1.6.2",
+  "page": 65,
+  "inputs": {
+   "commodity": "B",
+   "rho_o": 803.141,
+   "t_f": 25.3,
+   "p_psig": 267,
+   "volume": 9998.7
+  },
+  "expected": {
+   "rho_60": 787.507922593917,
+   "ctl": 1.018381017381,
+   "fp": 0.539959363768,
+   "cpl": 1.001443772976,
+   "ctpl": 1.019851328373,
+   "ctpl_rounded": 1.01985,
+   "iterations": 3
+  },
+  "notes": "Cambia de subgrupo: jet fuel (m=0) -> transicion (m>=1).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.2-ej6",
+  "section": "11.1.6.2",
+  "page": 66,
+  "inputs": {
+   "commodity": "B",
+   "rel_density_o": 0.7322,
+   "rho_o": 731.4795152,
+   "t_f": 139,
+   "p_psig": 100,
+   "volume": 1000
+  },
+  "expected": {
+   "rho_60": 770.34979425206,
+   "ctl": 0.948677079691,
+   "fp": 0.910923457238,
+   "cpl": 1.000911753995,
+   "ctpl": 0.949542039808,
+   "ctpl_rounded": 0.94954,
+   "volume_base": 949.54,
+   "iterations": 3
+  },
+  "notes": "Cambio de subgrupo gasolina -> transicion (m=1) -> gasolina (m=2,3); la norma lo exige.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.2-ej7",
+  "section": "11.1.6.2",
+  "page": 67,
+  "inputs": {
+   "commodity": "C",
+   "alpha_60": 0.00057634,
+   "rho_o": 853.7,
+   "t_f": 84.5,
+   "p_psig": 573,
+   "volume": 5000
+  },
+  "expected": {
+   "rho_60": 863.403098613648,
+   "ctl": 0.985817857839,
+   "fp": 0.519616156675,
+   "cpl": 1.002986291965,
+   "ctpl": 0.988761797787,
+   "ctpl_rounded": 0.98876,
+   "volume_base": 4943.8,
+   "iterations": 2
+  },
+  "notes": "Tipo C: Da=0 => DT=0. CTL constante entre iteraciones.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.2-ej8",
+  "section": "11.1.6.2",
+  "page": 68,
+  "inputs": {
+   "commodity": "D",
+   "api_o": 23.6,
+   "rho_o": 911.416918117344,
+   "t_f": 78.7,
+   "p_psig": 128,
+   "volume": 2500
+  },
+  "expected": {
+   "rho_60": 917.442430351448,
+   "ctl": 0.992874116475,
+   "fp": 0.438941943315,
+   "cpl": 1.000562161535,
+   "ctpl": 0.993432272113,
+   "ctpl_rounded": 0.99343,
+   "volume_base": 2483.575,
+   "iterations": 2
+  },
+  "notes": "CTL de salida tomado del texto OCR; verificar contra CTPL/CPL.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.2-ej9",
+  "section": "11.1.6.2",
+  "page": 69,
+  "inputs": {
+   "commodity": "D",
+   "api_o": 62,
+   "rho_o": 730.546583979328,
+   "t_f": 302,
+   "p_psig": 1499.97,
+   "volume": 989.4
+  },
+  "expected": {
+   "rho_60": 801.061124838869,
+   "ctl": 0.892011191342,
+   "fp": 1.459310590459,
+   "cpl": 1.022379081731,
+   "ctpl": 0.911973582698,
+   "ctpl_rounded": 0.91197,
+   "volume_base": 902.303118,
+   "iterations": 2
+  },
+  "notes": "Valor inicial recortado a rho_60,min=800.9. CTL de salida 0.892011191342 (el texto OCR de la columna de iteracion muestra 0.892011193142; el codigo reproduce el valor de salida y CTPL/CPL lo confirman).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.2-ej10",
+  "section": "11.1.6.2",
+  "page": 70,
+  "inputs": {
+   "commodity": "A",
+   "rho_o": 470.168176677975,
+   "t_f": -58.05,
+   "p_psig": 0
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "t < -58 F y rho_o < 470.4 (crudo) -> error en Paso 1 (rango de rho_o observado), antes de iterar.",
+  "tolerance": null
+ },
+ {
+  "id": "6.2-ej11",
+  "section": "11.1.6.2",
+  "page": 70,
+  "inputs": {
+   "commodity": "A",
+   "rho_o": 1201.84291787111,
+   "t_f": 302.08,
+   "p_psig": 1500.12
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "t > 302 F, P > 1500, rho_o > 1201.8 -> error en Paso 1 (rango de rho_o observado), antes de iterar.",
+  "tolerance": null
+ },
+ {
+  "id": "6.2-ej12",
+  "section": "11.1.6.2",
+  "page": 70,
+  "inputs": {
+   "commodity": "B",
+   "rho_o": 470.17,
+   "t_f": -58.05,
+   "p_psig": 0
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "t < -58 F y rho_o < 470.4 (productos; la norma imprime 470.3) -> error en Paso 1 (rango de rho_o observado), antes de iterar.",
+  "tolerance": null
+ },
+ {
+  "id": "6.2-ej13",
+  "section": "11.1.6.2",
+  "page": 70,
+  "inputs": {
+   "commodity": "B",
+   "rho_o": 1209.52,
+   "t_f": 302.08,
+   "p_psig": 1500.05
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "t > 302 F, P > 1500, rho_o > 1209.5 -> error en Paso 1 (rango de rho_o observado), antes de iterar.",
+  "tolerance": null
+ },
+ {
+  "id": "6.2-ej14",
+  "section": "11.1.6.2",
+  "page": 71,
+  "inputs": {
+   "commodity": "D",
+   "rho_o": 1208.521535436437,
+   "t_f": 60,
+   "p_psig": 0
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "rho_o > limite (lubricantes; la norma imprime 'greater than 1163.5') -> error en Paso 1 (rango de rho_o observado), antes de iterar.",
+  "tolerance": null
+ },
+ {
+  "id": "6.2-ej15",
+  "section": "11.1.6.2",
+  "page": 71,
+  "inputs": {
+   "commodity": "D",
+   "rho_o": 714.015375290433,
+   "t_f": 72.32,
+   "p_psig": 0
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "rho_o < 714.3 (lubricantes) -> error en Paso 1 (rango de rho_o observado), antes de iterar.",
+  "tolerance": null
+ },
+ {
+  "id": "6.2-ej16",
+  "section": "11.1.6.2",
+  "page": 71,
+  "inputs": {
+   "commodity": "D",
+   "rho_o": 1208.314932900248,
+   "t_f": -57.97,
+   "p_psig": 240.7
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "rho_o > 1208.3 (lubricantes) -> error en Paso 1 (rango de rho_o observado), antes de iterar.",
+  "tolerance": null
+ },
+ {
+  "id": "6.3-ej1",
+  "section": "11.1.6.3",
+  "page": 74,
+  "inputs": {
+   "commodity": "A",
+   "rho_o": 823.7,
+   "t_o_f": 80.25,
+   "p_o_psig": -5,
+   "t_f": -57.9,
+   "p_psig": 0,
+   "volume": 1000
+  },
+  "expected": {
+   "rho_60": 832.028099977475,
+   "ctl_o": 0.989990602513,
+   "fp_o": 0.566985780172,
+   "ctpl_o": 0.989990602513,
+   "ctpl_o_rounded": 0.98999,
+   "ctl": 1.056966235844,
+   "fp": 0.349850873727,
+   "ctpl_rounded": 1.05697,
+   "rho": 879.425608949795,
+   "volume_base": 989.99,
+   "volume_alt": 936.630178718
+  },
+  "notes": "",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.3-ej2",
+  "section": "11.1.6.3",
+  "page": 75,
+  "inputs": {
+   "commodity": "A",
+   "rel_density_o": 0.7233,
+   "rho_o": 722.5882728,
+   "t_o_f": -57.95,
+   "p_o_psig": 113.5,
+   "t_f": 301.95,
+   "p_psig": 1342,
+   "volume": 9988.7
+  },
+  "expected": {
+   "rho_60": 663.423272118035,
+   "ctl_o": 1.088435322387,
+   "fp_o": 0.603495901031,
+   "cpl_o": 1.00068543735,
+   "ctpl_o": 1.08918137661,
+   "ctpl_o_rounded": 1.08918,
+   "ctpl_rounded": 0.85467,
+   "rho": 567.009178129011,
+   "volume_base": 10879.492266,
+   "volume_alt": 12729.4654849
+  },
+  "notes": "",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.3-ej3",
+  "section": "11.1.6.3",
+  "page": 76,
+  "inputs": {
+   "commodity": "B",
+   "rel_density_o": 0.8665,
+   "rho_o": 865.647364,
+   "t_o_f": 68.02,
+   "p_o_psig": 11,
+   "t_f": 150.3,
+   "p_psig": 534,
+   "volume": 285.45
+  },
+  "expected": {
+   "rho_60": 868.730481427765,
+   "ctl_o": 0.9963978645,
+   "fp_o": 0.484844473663,
+   "cpl_o": 1.000053335737,
+   "ctpl_o_rounded": 0.99645,
+   "ctl": 0.959034901244,
+   "fp": 0.631776484622,
+   "cpl": 1.003385106716,
+   "ctpl": 0.962281336729,
+   "ctpl_rounded": 0.96228,
+   "rho": 835.963128925946,
+   "volume_base": 284.4366525
+  },
+  "notes": "",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.3-ej4",
+  "section": "11.1.6.3",
+  "page": 77,
+  "inputs": {
+   "commodity": "B",
+   "api_o": 41.4,
+   "rho_o": 817.586836321573,
+   "t_o_f": 72.04,
+   "p_o_psig": 375,
+   "t_f": -58,
+   "p_psig": 47.75,
+   "volume": 14.95
+  },
+  "expected": {
+   "rho_60": 820.686533964218,
+   "fp_o": 0.572660475665,
+   "cpl_o": 1.002152098365,
+   "ctpl_o": 0.99622304313,
+   "ctpl_o_rounded": 0.99622,
+   "ctl": 1.056751557035,
+   "fp": 0.359117236149,
+   "ctpl_rounded": 1.05693,
+   "rho": 867.410514841381,
+   "volume_base": 14.893489,
+   "volume_alt": 14.0912728374
+  },
+  "notes": "",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.3-ej5",
+  "section": "11.1.6.3",
+  "page": 78,
+  "inputs": {
+   "commodity": "B",
+   "rho_o": 790.53,
+   "t_o_f": 35.34,
+   "p_o_psig": 38.4,
+   "t_f": 127.98,
+   "p_psig": 121.8,
+   "volume": 99998
+  },
+  "expected": {
+   "rho_60": 779.174880755919,
+   "ctl_o": 1.01434778063,
+   "fp_o": 0.578757914964,
+   "cpl_o": 1.000222292442,
+   "ctpl_o": 1.014573262475,
+   "ctpl_o_rounded": 1.01457,
+   "fp": 0.835760463789,
+   "cpl": 1.001018993536,
+   "ctpl": 0.960814040896,
+   "ctpl_rounded": 0.96081,
+   "rho": 748.642165743914,
+   "volume_base": 101454.97086
+  },
+  "notes": "",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.3-ej6",
+  "section": "11.1.6.3",
+  "page": 79,
+  "inputs": {
+   "commodity": "B",
+   "rho_o": 602.6,
+   "t_o_f": 74.33,
+   "p_o_psig": 2,
+   "t_f": -50,
+   "p_psig": -2.33,
+   "volume": 501.7
+  },
+  "expected": {
+   "rho_60": 610.620806310613,
+   "fp_o": 1.837290338603,
+   "cpl_o": 1.000036747157,
+   "ctpl_o": 0.986864505365,
+   "ctpl_o_rounded": 0.98686,
+   "ctl": 1.097026730683,
+   "fp": 0.831793615513,
+   "ctpl_rounded": 1.09703,
+   "rho": 669.867346834158,
+   "volume_base": 495.107662,
+   "volume_alt": 451.316428903
+  },
+  "notes": "rho_o (602.6) < rho_60,min: valido porque el limite de rho_o observado es 470.3/470.4. t alterna leida como -50 F (OCR '.50'), verificar en PDF.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.3-ej7",
+  "section": "11.1.6.3",
+  "page": 80,
+  "inputs": {
+   "commodity": "C",
+   "alpha_60": 0.00057634,
+   "rho_o": 853.7,
+   "t_o_f": 84.5,
+   "p_o_psig": 157,
+   "t_f": 97.4,
+   "p_psig": 0,
+   "volume": 10000
+  },
+  "expected": {
+   "rho_60": 865.279061018129,
+   "ctl_o": 0.985817857839,
+   "fp_o": 0.516634323827,
+   "cpl_o": 1.000811774331,
+   "ctpl_o": 0.986618119472,
+   "ctpl_o_rounded": 0.98662,
+   "ctl": 0.978305995393,
+   "fp": 0.538697628351,
+   "cpl": 1.0,
+   "ctpl": 0.978305995393,
+   "ctpl_rounded": 0.97831,
+   "rho": 846.507693082447,
+   "volume_base": 9866.2,
+   "volume_alt": 10084.9424007
+  },
+  "notes": "",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.3-ej8",
+  "section": "11.1.6.3",
+  "page": 81,
+  "inputs": {
+   "commodity": "D",
+   "api_o": -14.1,
+   "rho_o": 1204.095093696763,
+   "t_o_f": -57.9,
+   "p_o_psig": 233,
+   "t_f": 60,
+   "p_psig": 245,
+   "volume": 251.2
+  },
+  "expected": {
+   "rho_60": 1162.81779744,
+   "fp_o": 0.219818333493,
+   "cpl_o": 1.000512439176,
+   "ctpl_o": 1.035497647478,
+   "ctpl_o_rounded": 1.0355,
+   "ctl": 1.000000000001,
+   "fp": 0.273551802459,
+   "cpl": 1.000670651388,
+   "ctpl": 1.000670651389,
+   "ctpl_rounded": 1.00067,
+   "rho": 1163.59764281,
+   "volume_base": 260.1176,
+   "volume_alt": 259.943437897
+  },
+  "notes": "CTL a 60 F = 1.000000000001 (no exactamente 1 por el desplazamiento ITS-90/IPTS-68).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.3-ej9",
+  "section": "11.1.6.3",
+  "page": 82,
+  "inputs": {
+   "commodity": "D",
+   "api_o": 36.43,
+   "rho_o": 841.783862323587,
+   "t_o_f": 302,
+   "p_o_psig": 1499.97,
+   "t_f": 98.65,
+   "p_psig": 568.33,
+   "volume": 999.6
+  },
+  "expected": {
+   "rho_60": 917.505498028854,
+   "ctl_o": 0.905934133257,
+   "fp_o": 0.838261567336,
+   "cpl_o": 1.012733782436,
+   "ctpl_o": 0.917470101411,
+   "ctpl_o_rounded": 0.91747,
+   "ctpl_rounded": 0.98785,
+   "rho": 906.359235485755,
+   "volume_base": 917.103012,
+   "volume_alt": 928.382863795
+  },
+  "notes": "",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.3-ej12",
+  "section": "11.1.6.3",
+  "page": 84,
+  "inputs": {
+   "commodity": "A",
+   "api_o": -9.1,
+   "rho_o": 1154.908202614379,
+   "t_o_f": 89.08,
+   "p_o_psig": 0.43,
+   "t_f": 97.06,
+   "p_psig": 27.75,
+   "volume": 1000
+  },
+  "expected": {
+   "rho_60": 1163.4529809,
+   "ctl_o": 0.99265444238,
+   "fp_o": 0.288480047418,
+   "cpl_o": 1.000001240466,
+   "ctpl_o": 0.992655673734,
+   "ctpl_o_rounded": 0.99266,
+   "ctpl_rounded": 0.99071,
+   "rho": 1152.64886504,
+   "volume_base": 992.66,
+   "volume_alt": 1001.96828537
+  },
+  "notes": "",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.3-ej13",
+  "section": "11.1.6.3",
+  "page": 85,
+  "inputs": {
+   "commodity": "A",
+   "api_o": 105.3,
+   "rho_o": 596.962685810811,
+   "t_o_f": 87.9,
+   "p_o_psig": 172.34,
+   "t_f": 237.8,
+   "p_psig": 0,
+   "volume": 1000
+  },
+  "expected": {
+   "rho_60": 610.603878491534,
+   "ctl_o": 0.974283669212,
+   "fp_o": 2.003584457334,
+   "cpl_o": 1.00346494182,
+   "ctpl_o": 0.977659505442,
+   "ctpl_o_rounded": 0.97766,
+   "fp": 5.209412010592,
+   "cpl": 1.0,
+   "ctpl": 0.832034523163,
+   "ctpl_rounded": 0.83203,
+   "rho": 508.043506882197,
+   "volume_base": 977.66,
+   "volume_alt": 1175.02974652
+  },
+  "notes": "",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.3-ej18",
+  "section": "11.1.6.3",
+  "page": 88,
+  "inputs": {
+   "commodity": "D",
+   "api_o": -14.15,
+   "rho_o": 1204.608129527056,
+   "t_o_f": -57.95,
+   "p_o_psig": 233.7,
+   "t_f": 60,
+   "p_psig": 245.66,
+   "volume": 1000
+  },
+  "expected": {
+   "rho_60": 1163.31178744,
+   "fp_o": 0.219706997262,
+   "cpl_o": 1.000513719024,
+   "ctpl_o_rounded": 1.0355,
+   "ctl": 1.000000000001,
+   "fp": 0.273391493229,
+   "cpl": 1.00067206491,
+   "ctpl": 1.000672064911,
+   "ctpl_rounded": 1.00067,
+   "rho": 1164.09360847,
+   "volume_base": 1035.5,
+   "volume_alt": 1034.8066795
+  },
+  "notes": "La densidad a t,P (1164.09) supera 1163.5: la norma no la rechaza (el limite aplica a rho_60).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6.3-ej10",
+  "section": "11.1.6.3",
+  "page": 83,
+  "inputs": {
+   "commodity": "A",
+   "rho_o": 470.168176677975,
+   "t_o_f": -58.05,
+   "t_f": -58.05,
+   "p_o_psig": -5,
+   "p_psig": -5
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "t_o y t < -58 F, rho_o < 470.4",
+  "tolerance": null
+ },
+ {
+  "id": "6.3-ej11",
+  "section": "11.1.6.3",
+  "page": 83,
+  "inputs": {
+   "commodity": "A",
+   "rho_o": 1201.740746408229,
+   "t_o_f": 302.08,
+   "t_f": 302.06,
+   "p_o_psig": 1500.43,
+   "p_psig": 0
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "t_o y t > 302 F, P_o > 1500",
+  "tolerance": null
+ },
+ {
+  "id": "6.3-ej14",
+  "section": "11.1.6.3",
+  "page": 86,
+  "inputs": {
+   "commodity": "B",
+   "rho_o": 470.17,
+   "t_o_f": -58.05,
+   "t_f": -58.05,
+   "p_o_psig": 0,
+   "p_psig": 0
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "t_o y t < -58 F, rho_o < 470.3",
+  "tolerance": null
+ },
+ {
+  "id": "6.3-ej15",
+  "section": "11.1.6.3",
+  "page": 86,
+  "inputs": {
+   "commodity": "B",
+   "rho_o": 1209.56,
+   "t_o_f": 302.08,
+   "t_f": 302.05,
+   "p_o_psig": 1500.5,
+   "p_psig": 0
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "t_o y t > 302 F, P_o > 1500, rho_o > 1209.5",
+  "tolerance": null
+ },
+ {
+  "id": "6.3-ej16",
+  "section": "11.1.6.3",
+  "page": 87,
+  "inputs": {
+   "commodity": "D",
+   "rho_o": 1163.942066694113,
+   "t_o_f": -58.05,
+   "t_f": -58.05,
+   "p_o_psig": 0,
+   "p_psig": 0
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "t_o y t < -58 F",
+  "tolerance": null
+ },
+ {
+  "id": "6.3-ej17",
+  "section": "11.1.6.3",
+  "page": 87,
+  "inputs": {
+   "commodity": "D",
+   "rho_o": 800.547989579794,
+   "t_o_f": 302.05,
+   "t_f": 302.05,
+   "p_o_psig": 1500.5,
+   "p_psig": 0
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "t_o y t > 302 F, P_o > 1500",
+  "tolerance": null
+ },
+ {
+  "id": "7.1-ej1",
+  "section": "11.1.7.1",
+  "page": 92,
+  "inputs": {
+   "commodity": "A",
+   "T_base_c": 15,
+   "t_c": -32.8,
+   "p": 24.6,
+   "p_unit": "bar",
+   "rho_T": 772.3,
+   "volume": 9885
+  },
+  "expected": {
+   "t_f": -27.04,
+   "T_f": 59,
+   "p_psi": 356.792849987316,
+   "rho_60": 771.858049874826,
+   "ctl_60": 1.000572579894,
+   "ctl_star": 1.049020399586,
+   "fp_psi": 0.462386457487,
+   "cpl": 1.001652488031,
+   "ctpl_star": 1.050753893241,
+   "ctl": 1.048420095319,
+   "ctpl": 1.050152596978,
+   "ctpl_rounded": 1.05015,
+   "fp_bar": 6.706348860257,
+   "volume_base": 10380.73275,
+   "rho": 811.030845
+  },
+  "notes": "rho a t,P impresa = rho_T x CTPL REDONDEADO (772.3 x 1.05015). Presion en la unidad de la norma (p_unit); convertir a psig con /6.894757 (kPa) o /0.06894757 (bar). El codigo 4f1216d solo coincide si se le pasa ya en psig. Fp esperado en kPa^-1 o bar^-1. rho esperado = rho_T x CTPL_rounded (asi lo imprime la norma).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "7.1-ej2",
+  "section": "11.1.7.1",
+  "page": 93,
+  "inputs": {
+   "commodity": "A",
+   "T_base_c": 20,
+   "t_c": -32.8,
+   "p": 24.65,
+   "p_unit": "bar",
+   "rho_T": 772.3,
+   "volume": 397498
+  },
+  "expected": {
+   "t_f": -27.04,
+   "T_f": 68,
+   "p_psi": 357.518038706803,
+   "rho_60": 775.822887700255,
+   "ctl_60": 0.995459159873,
+   "ctl_star": 1.048529743821,
+   "fp_psi": 0.45663858939,
+   "cpl": 1.001635234957,
+   "ctpl_star": 1.050244336311,
+   "ctl": 1.053312668251,
+   "ctpl": 1.055035081947,
+   "ctpl_rounded": 1.05504,
+   "fp_bar": 6.622983078151,
+   "volume_base": 419376.28992,
+   "rho": 814.807392
+  },
+  "notes": "Presion en la unidad de la norma (p_unit); convertir a psig con /6.894757 (kPa) o /0.06894757 (bar). El codigo 4f1216d solo coincide si se le pasa ya en psig. Fp esperado en kPa^-1 o bar^-1. rho esperado = rho_T x CTPL_rounded (asi lo imprime la norma).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "7.1-ej3",
+  "section": "11.1.7.1",
+  "page": 94,
+  "inputs": {
+   "commodity": "B",
+   "T_base_c": 15,
+   "t_c": 87.32,
+   "p": 75,
+   "p_unit": "kPa",
+   "rho_T": 865.6,
+   "volume": 48.75
+  },
+  "expected": {
+   "t_f": 189.176,
+   "T_f": 59,
+   "p_psi": 10.877830792296,
+   "rho_60": 865.20979944701,
+   "ctl_60": 1.000450989521,
+   "ctl_star": 0.940840865293,
+   "fp_psi": 0.725556454792,
+   "cpl": 1.000078931033,
+   "ctpl_star": 0.940915126834,
+   "ctl": 0.940416747194,
+   "ctpl": 0.94049097526,
+   "ctpl_rounded": 0.94049,
+   "fp_kpa": 0.105233071273,
+   "volume_base": 45.8488875,
+   "rho": 814.088144
+  },
+  "notes": "Presion en la unidad de la norma (p_unit); convertir a psig con /6.894757 (kPa) o /0.06894757 (bar). El codigo 4f1216d solo coincide si se le pasa ya en psig. Fp esperado en kPa^-1 o bar^-1. rho esperado = rho_T x CTPL_rounded (asi lo imprime la norma).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "7.1-ej4",
+  "section": "11.1.7.1",
+  "page": 95,
+  "inputs": {
+   "commodity": "B",
+   "T_base_c": 15,
+   "t_c": 27.37,
+   "p": 17.05,
+   "p_unit": "bar",
+   "rho_T": 793.5,
+   "volume": 200.2
+  },
+  "expected": {
+   "t_f": 81.266,
+   "T_f": 59,
+   "p_psi": 247.289353344868,
+   "rho_60": 793.083483971112,
+   "ctl_60": 1.000525185891,
+   "ctl_star": 0.988793028121,
+   "fp_psi": 0.656392797417,
+   "cpl": 1.001625828532,
+   "ctpl_star": 0.990400636038,
+   "ctl": 0.98827400056,
+   "ctpl": 0.989880764627,
+   "ctpl_rounded": 0.98988,
+   "fp_bar": 9.520173044783,
+   "volume_base": 198.173976,
+   "rho": 785.46978
+  },
+  "notes": "Presion en la unidad de la norma (p_unit); convertir a psig con /6.894757 (kPa) o /0.06894757 (bar). El codigo 4f1216d solo coincide si se le pasa ya en psig. Fp esperado en kPa^-1 o bar^-1. rho esperado = rho_T x CTPL_rounded (asi lo imprime la norma).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "7.1-ej5",
+  "section": "11.1.7.1",
+  "page": 96,
+  "inputs": {
+   "commodity": "B",
+   "T_base_c": 20,
+   "t_c": -36,
+   "p": 8.6,
+   "p_unit": "bar",
+   "rho_T": 772.3,
+   "volume": 1502.3
+  },
+  "expected": {
+   "t_f": -32.8,
+   "T_f": 68,
+   "p_psi": 124.732459751663,
+   "rho_60": 776.056458538058,
+   "ctl_60": 0.995159555056,
+   "ctl_star": 1.055011702151,
+   "fp_psi": 0.445919193636,
+   "cpl": 1.000556515516,
+   "ctpl_star": 1.055598832533,
+   "ctl": 1.060143267269,
+   "ctpl": 1.060733253446,
+   "ctpl_rounded": 1.06073,
+   "fp_bar": 6.467511380549,
+   "volume_base": 1593.534679,
+   "rho": 819.201779
+  },
+  "notes": "Presion en la unidad de la norma (p_unit); convertir a psig con /6.894757 (kPa) o /0.06894757 (bar). El codigo 4f1216d solo coincide si se le pasa ya en psig. Fp esperado en kPa^-1 o bar^-1. rho esperado = rho_T x CTPL_rounded (asi lo imprime la norma).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "7.1-ej6",
+  "section": "11.1.7.1",
+  "page": 97,
+  "inputs": {
+   "commodity": "B",
+   "T_base_c": 15,
+   "t_c": 27.35,
+   "p": 1235,
+   "p_unit": "kPa",
+   "rho_T": 657.3,
+   "volume": 1000
+  },
+  "expected": {
+   "t_f": 81.23,
+   "T_f": 59,
+   "p_psi": 179.121613713145,
+   "rho_60": 656.763156816252,
+   "ctl_60": 1.000817407583,
+   "ctl_star": 0.982555008412,
+   "fp_psi": 1.342969568596,
+   "cpl": 1.002411349381,
+   "ctpl_star": 0.984924291823,
+   "ctl": 0.98175251646,
+   "ctpl": 0.984119864783,
+   "ctpl_rounded": 0.98412,
+   "fp_kpa": 0.194781276352,
+   "volume_base": 984.12,
+   "rho": 646.862076
+  },
+  "notes": "Presion en la unidad de la norma (p_unit); convertir a psig con /6.894757 (kPa) o /0.06894757 (bar). El codigo 4f1216d solo coincide si se le pasa ya en psig. Fp esperado en kPa^-1 o bar^-1. rho esperado = rho_T x CTPL_rounded (asi lo imprime la norma).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "7.1-ej7",
+  "section": "11.1.7.1",
+  "page": 98,
+  "inputs": {
+   "commodity": "C",
+   "T_base_c": 15,
+   "t_c": 89.9,
+   "p": 45.35,
+   "p_unit": "bar",
+   "rho_T": 641.8,
+   "volume": 47.85,
+   "alpha_60_per_F": 0.000446759,
+   "alpha_60_per_C": 0.0008041662000000001
+  },
+  "expected": {
+   "t_f": 193.82,
+   "T_f": 59,
+   "p_psi": 657.746168574179,
+   "rho_60": 641.51336251301,
+   "ctl_60": 1.000446814523,
+   "ctl_star": 0.939260765097,
+   "fp_psi": 2.875296454594,
+   "cpl": 1.019276716462,
+   "ctpl_star": 0.957366628549,
+   "ctl": 0.938841277179,
+   "ctpl": 0.956939054283,
+   "ctpl_rounded": 0.95694,
+   "fp_bar": 41.70265108101,
+   "volume_base": 45.789579,
+   "rho": 614.164092
+  },
+  "notes": "Tipo C con alpha_60 = 0.000446759 per F (la norma lo da en F^-1); rho_60 = 641.5 < 610.6? no: dentro, pero tipo C no comprueba densidad. Presion en la unidad de la norma (p_unit); convertir a psig con /6.894757 (kPa) o /0.06894757 (bar). El codigo 4f1216d solo coincide si se le pasa ya en psig. Fp esperado en kPa^-1 o bar^-1. rho esperado = rho_T x CTPL_rounded (asi lo imprime la norma).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "7.1-ej8",
+  "section": "11.1.7.1",
+  "page": 99,
+  "inputs": {
+   "commodity": "A",
+   "T_base_c": 15,
+   "t_c": -50.025,
+   "p": -5,
+   "p_unit": "kPa",
+   "rho_T": 610.46
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "t < -50 C y densidad < 610.6 -> error (P negativa se fuerza a 0).",
+  "tolerance": null
+ },
+ {
+  "id": "7.1-ej9",
+  "section": "11.1.7.1",
+  "page": 99,
+  "inputs": {
+   "commodity": "B",
+   "T_base_c": 20,
+   "t_c": 150.025,
+   "p": 10343,
+   "p_unit": "kPa",
+   "rho_T": 1163.55
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "t > 150 C, P > 1500 psi (10343 kPa = 1500.125 psi), densidad > 1163.5 -> error. t_c deducida de t_F=302.045.",
+  "tolerance": null
+ },
+ {
+  "id": "7.1-ej10",
+  "section": "11.1.7.1",
+  "page": 100,
+  "inputs": {
+   "commodity": "D",
+   "T_base_c": 15,
+   "t_c": -50.025,
+   "p": 0,
+   "p_unit": "kPa",
+   "rho_T": 800.849
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "t < -50 C y densidad < 800.9 -> error.",
+  "tolerance": null
+ },
+ {
+  "id": "7.1-ej11",
+  "section": "11.1.7.1",
+  "page": 100,
+  "inputs": {
+   "commodity": "D",
+   "T_base_c": 20,
+   "t_c": 150.025,
+   "p": 103.43,
+   "p_unit": "bar",
+   "rho_T": 1163.55
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "t > 150 C, P > 1500 psi, densidad > 1163.5 -> error.",
+  "tolerance": null
+ },
+ {
+  "id": "7.2-ej1",
+  "section": "11.1.7.2",
+  "page": 104,
+  "inputs": {
+   "commodity": "B",
+   "T_base_c": 15,
+   "t_o_c": 82.35,
+   "p_o": 10005,
+   "p_unit": "kPa",
+   "rho_o": 721.1,
+   "volume": 10000
+  },
+  "expected": {
+   "t_o_f": 180.23,
+   "p_psi": 1451.10262769,
+   "rho_60": 770.349118751609,
+   "ctl_star": 0.921444124669,
+   "fp_psi": 1.076685418863,
+   "cpl": 1.015871788215,
+   "ctpl_star": 0.936069090668,
+   "ctl_60": 1.000640828053,
+   "rho_T": 770.842780077632,
+   "ctl": 0.920854015583,
+   "ctpl": 0.935469615495,
+   "ctpl_rounded": 0.93547,
+   "fp_kpa": 0.156160024039,
+   "volume_base": 9354.7,
+   "iterations": 4
+  },
+  "notes": "Subgrupos: gasolina -> transicion -> ... -> gasolina (4 iteraciones). Presion en la unidad de la norma (p_unit); convertir a psig con /6.894757 (kPa) o /0.06894757 (bar). El codigo 4f1216d solo coincide si se le pasa ya en psig. Fp esperado en kPa^-1 o bar^-1.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "7.2-ej2",
+  "section": "11.1.7.2",
+  "page": 105,
+  "inputs": {
+   "commodity": "A",
+   "T_base_c": 15,
+   "t_o_c": 26.8,
+   "p_o": -5,
+   "p_unit": "kPa",
+   "rho_o": 823.7,
+   "volume": 1000
+  },
+  "expected": {
+   "t_o_f": 80.24,
+   "p_psi": 0,
+   "rho_60": 832.024016649536,
+   "ctl_star": 0.989995461094,
+   "fp_psi": 0.56697384635,
+   "cpl": 1.0,
+   "ctpl_star": 0.989995461094,
+   "ctl_60": 1.000492776246,
+   "rho_T": 832.434018321149,
+   "ctl": 0.989507855128,
+   "ctpl": 0.989507855128,
+   "ctpl_rounded": 0.98951,
+   "fp_kpa": 0.082232607523,
+   "volume_base": 989.51,
+   "iterations": 2
+  },
+  "notes": "Presion en la unidad de la norma (p_unit); convertir a psig con /6.894757 (kPa) o /0.06894757 (bar). El codigo 4f1216d solo coincide si se le pasa ya en psig. Fp esperado en kPa^-1 o bar^-1.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "7.2-ej3",
+  "section": "11.1.7.2",
+  "page": 106,
+  "inputs": {
+   "commodity": "A",
+   "T_base_c": 15,
+   "t_o_c": -50,
+   "p_o": 115,
+   "p_unit": "kPa",
+   "rho_o": 722.6,
+   "volume": 145902
+  },
+  "expected": {
+   "t_o_f": -58,
+   "p_psi": 16.6793405482,
+   "rho_60": 663.869868377549,
+   "ctl_star": 1.088357017112,
+   "fp_psi": 0.602118682034,
+   "cpl": 1.000100439513,
+   "ctpl_star": 1.08846633116,
+   "ctl_60": 1.00077395995,
+   "rho_T": 664.383677067826,
+   "ctl": 1.087515323806,
+   "ctpl": 1.087624553315,
+   "ctpl_rounded": 1.08762,
+   "fp_kpa": 0.087329935201,
+   "volume_base": 158685.93324,
+   "iterations": 3
+  },
+  "notes": "Presion en la unidad de la norma (p_unit); convertir a psig con /6.894757 (kPa) o /0.06894757 (bar). El codigo 4f1216d solo coincide si se le pasa ya en psig. Fp esperado en kPa^-1 o bar^-1.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "7.2-ej4",
+  "section": "11.1.7.2",
+  "page": 107,
+  "inputs": {
+   "commodity": "B",
+   "T_base_c": 15,
+   "t_o_c": 20,
+   "p_o": 11.25,
+   "p_unit": "bar",
+   "rho_o": 865.6,
+   "volume": 99873
+  },
+  "expected": {
+   "t_o_f": 68,
+   "p_psi": 163.167461884,
+   "rho_60": 868.036119189528,
+   "ctl_star": 0.996403096038,
+   "fp_psi": 0.485793167772,
+   "cpl": 1.000793285184,
+   "ctpl_star": 0.997193527852,
+   "ctl_60": 1.000449070985,
+   "rho_T": 868.425929024799,
+   "ctl": 0.995955841168,
+   "ctpl": 0.996745918181,
+   "ctpl_rounded": 0.99675,
+   "fp_bar": 7.045834505444,
+   "volume_base": 99548.41275,
+   "iterations": 2
+  },
+  "notes": "Presion en la unidad de la norma (p_unit); convertir a psig con /6.894757 (kPa) o /0.06894757 (bar). El codigo 4f1216d solo coincide si se le pasa ya en psig. Fp esperado en kPa^-1 o bar^-1.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "7.2-ej5",
+  "section": "11.1.7.2",
+  "page": 108,
+  "inputs": {
+   "commodity": "B",
+   "T_base_c": 15,
+   "t_o_c": 22.25,
+   "p_o": 2587.3,
+   "p_unit": "kPa",
+   "rho_o": 817.59,
+   "volume": 400.15
+  },
+  "expected": {
+   "t_o_f": 72.05,
+   "p_psi": 375.256154785,
+   "rho_60": 820.692469224813,
+   "ctl_star": 0.994078840682,
+   "fp_psi": 0.572669201827,
+   "cpl": 1.002153604472,
+   "ctpl_star": 0.996219693318,
+   "ctl_60": 1.00049044978,
+   "rho_T": 821.09497766568,
+   "ctl": 0.993591533933,
+   "ctpl": 0.995731337103,
+   "ctpl_rounded": 0.99573,
+   "fp_kpa": 0.083058649032,
+   "volume_base": 398.4413595,
+   "iterations": 2
+  },
+  "notes": "Presion en la unidad de la norma (p_unit); convertir a psig con /6.894757 (kPa) o /0.06894757 (bar). El codigo 4f1216d solo coincide si se le pasa ya en psig. Fp esperado en kPa^-1 o bar^-1.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "7.2-ej6",
+  "section": "11.1.7.2",
+  "page": 109,
+  "inputs": {
+   "commodity": "B",
+   "T_base_c": 15,
+   "t_o_c": 1.85,
+   "p_o": 1835,
+   "p_unit": "kPa",
+   "rho_o": 798.9,
+   "volume": 1998.7
+  },
+  "expected": {
+   "t_o_f": 35.33,
+   "p_psi": 266.144260052,
+   "rho_60": 787.383920775576,
+   "ctl_star": 1.013109036142,
+   "fp_psi": 0.561669106263,
+   "cpl": 1.001497088009,
+   "ctpl_star": 1.014625749532,
+   "ctl_60": 1.000533459147,
+   "rho_T": 787.803957930685,
+   "ctl": 1.012568872015,
+   "ctpl": 1.014084776732,
+   "ctpl_rounded": 1.01408,
+   "fp_kpa": 0.081463219989,
+   "iterations": 3
+  },
+  "notes": "Subgrupos: jet fuel -> transicion. Presion en la unidad de la norma (p_unit); convertir a psig con /6.894757 (kPa) o /0.06894757 (bar). El codigo 4f1216d solo coincide si se le pasa ya en psig. Fp esperado en kPa^-1 o bar^-1.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "7.2-ej7",
+  "section": "11.1.7.2",
+  "page": 110,
+  "inputs": {
+   "commodity": "B",
+   "T_base_c": 15,
+   "t_o_c": 5.47,
+   "p_o": 1710,
+   "p_unit": "kPa",
+   "rho_o": 779.6,
+   "volume": 89987
+  },
+  "expected": {
+   "t_o_f": 41.846,
+   "p_psi": 248.014542064,
+   "rho_60": 769.471465004491,
+   "ctl_star": 1.011614013219,
+   "fp_psi": 0.616431370856,
+   "cpl": 1.001531180371,
+   "ctpl_star": 1.013162976739,
+   "ctl_60": 1.000641929113,
+   "rho_T": 769.965411139556,
+   "ctl": 1.010965045324,
+   "ctpl": 1.012513015157,
+   "ctpl_rounded": 1.01251,
+   "fp_kpa": 0.089405815297,
+   "volume_base": 91112.73737,
+   "iterations": 3
+  },
+  "notes": "Subgrupos: transicion (m=0) -> gasolina. Presion en la unidad de la norma (p_unit); convertir a psig con /6.894757 (kPa) o /0.06894757 (bar). El codigo 4f1216d solo coincide si se le pasa ya en psig. Fp esperado en kPa^-1 o bar^-1.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "7.2-ej8",
+  "section": "11.1.7.2",
+  "page": 111,
+  "inputs": {
+   "commodity": "C",
+   "T_base_c": 15,
+   "t_o_c": 29.18,
+   "p_o": 395,
+   "p_unit": "kPa",
+   "rho_o": 853.7,
+   "volume": 8501.3,
+   "alpha_60_per_F": 0.0005763,
+   "alpha_60_per_C": 0.0010373399999999999
+  },
+  "expected": {
+   "t_o_f": 84.524,
+   "p_psi": 57.2899088394,
+   "rho_60": 865.736878409727,
+   "ctl_star": 0.985804899058,
+   "fp_psi": 0.515952255703,
+   "cpl": 1.000295675975,
+   "ctpl_star": 0.986096377884,
+   "ctl_60": 1.000576349988,
+   "rho_T": 866.235845849433,
+   "ctl": 0.985237057692,
+   "ctpl": 0.98552836862,
+   "ctpl_rounded": 0.98553,
+   "fp_kpa": 0.074832551126,
+   "volume_base": 8378.286189,
+   "iterations": 2
+  },
+  "notes": "Tipo C, alpha_60 = 0.0005763 per F (impreso en el paso 3 como 0.000576300000). Presion en la unidad de la norma (p_unit); convertir a psig con /6.894757 (kPa) o /0.06894757 (bar). El codigo 4f1216d solo coincide si se le pasa ya en psig. Fp esperado en kPa^-1 o bar^-1.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "7.2-ej9",
+  "section": "11.1.7.2",
+  "page": 112,
+  "inputs": {
+   "commodity": "D",
+   "T_base_c": 15,
+   "t_o_c": -49.97,
+   "p_o": 31.1,
+   "p_unit": "bar",
+   "rho_o": 1204.6,
+   "volume": 100
+  },
+  "expected": {
+   "t_o_f": -57.946,
+   "p_psi": 451.067383521,
+   "rho_60": 1162.72940184,
+   "ctl_star": 1.034983389839,
+   "fp_psi": 0.219815871316,
+   "cpl": 1.000992501782,
+   "ctpl_star": 1.036010612698,
+   "ctl_60": 1.000300016026,
+   "rho_T": 1163.078239292499,
+   "ctl": 1.034672971366,
+   "ctpl": 1.035699886134,
+   "ctpl_rounded": 1.0357,
+   "fp_bar": 3.188159804848,
+   "volume_base": 103.57
+  },
+  "notes": "Valor inicial recortado a rho_60,max = 1163.5. Presion en la unidad de la norma (p_unit); convertir a psig con /6.894757 (kPa) o /0.06894757 (bar). El codigo 4f1216d solo coincide si se le pasa ya en psig. Fp esperado en kPa^-1 o bar^-1.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "7.2-ej10",
+  "section": "11.1.7.2",
+  "page": 113,
+  "inputs": {
+   "commodity": "D",
+   "T_base_c": 15,
+   "t_o_c": 150,
+   "p_o": 100,
+   "p_unit": "kPa",
+   "rho_o": 734.3,
+   "volume": 987.37
+  },
+  "expected": {
+   "t_o_f": 302,
+   "p_psi": 14.5037743897,
+   "rho_60": 820.63028057093,
+   "ctl_star": 0.894630352025,
+   "ctpl_star": 0.894800030358,
+   "ctl_60": 1.000425069038,
+   "rho_T": 820.979105094945,
+   "ctl": 0.894250233938,
+   "ctpl": 0.894419840177,
+   "ctpl_rounded": 0.89442,
+   "fp_kpa": 0.18962709898,
+   "volume_base": 883.1234754
+  },
+  "notes": "Valor inicial recortado a rho_60,min = 800.9. Presion en la unidad de la norma (p_unit); convertir a psig con /6.894757 (kPa) o /0.06894757 (bar). El codigo 4f1216d solo coincide si se le pasa ya en psig. Fp esperado en kPa^-1 o bar^-1.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "7.2-ej11",
+  "section": "11.1.7.2",
+  "page": 114,
+  "inputs": {
+   "commodity": "A",
+   "T_base_c": 15,
+   "t_o_c": -50.05,
+   "p_o": 0,
+   "p_unit": "kPa",
+   "rho_o": 470.27
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "t < -50 C; rho_o < 470.4",
+  "tolerance": null
+ },
+ {
+  "id": "7.2-ej12",
+  "section": "11.1.7.2",
+  "page": 114,
+  "inputs": {
+   "commodity": "A",
+   "T_base_c": 15,
+   "t_o_c": 150.03,
+   "p_o": 103.425,
+   "p_unit": "bar",
+   "rho_o": 1201.85
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "t > 150 C; P > 1500 psi; rho_o > 1201.8",
+  "tolerance": null
+ },
+ {
+  "id": "7.2-ej13",
+  "section": "11.1.7.2",
+  "page": 114,
+  "inputs": {
+   "commodity": "B",
+   "T_base_c": 15,
+   "t_o_c": -50.05,
+   "p_o": 0,
+   "p_unit": "kPa",
+   "rho_o": 470.17
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "t < -50 C; rho_o < 470.3",
+  "tolerance": null
+ },
+ {
+  "id": "7.2-ej14",
+  "section": "11.1.7.2",
+  "page": 115,
+  "inputs": {
+   "commodity": "B",
+   "T_base_c": 15,
+   "t_o_c": 150.02,
+   "p_o": 10342.5,
+   "p_unit": "kPa",
+   "rho_o": 1209.56
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "t > 150 C; P > 1500 psi; rho_o > 1209.5",
+  "tolerance": null
+ },
+ {
+  "id": "7.2-ej15",
+  "section": "11.1.7.2",
+  "page": 115,
+  "inputs": {
+   "commodity": "D",
+   "T_base_c": 15,
+   "t_o_c": 15.56,
+   "p_o": 10342.5,
+   "p_unit": "kPa",
+   "rho_o": 1208.52
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "P > 1500 psi; rho_o > 1208.3",
+  "tolerance": null
+ },
+ {
+  "id": "7.2-ej16",
+  "section": "11.1.7.2",
+  "page": 115,
+  "inputs": {
+   "commodity": "D",
+   "T_base_c": 15,
+   "t_o_c": 22.42,
+   "p_o": 0,
+   "p_unit": "kPa",
+   "rho_o": 714.245
+  },
+  "expected": {
+   "error": true
+  },
+  "notes": "rho_o < 714.3 (lubricantes). t_o_c deducida de t_F=72.356.",
+  "tolerance": null
+ },
+ {
+  "id": "7.2-ej17",
+  "section": "11.1.7.2",
+  "page": 116,
+  "inputs": {
+   "commodity": "D",
+   "T_base_c": 15,
+   "t_o_c": 0.42,
+   "p_o": 0,
+   "p_unit": "kPa",
+   "rho_o": 723.45
+  },
+  "expected": {
+   "error": "no_convergence"
+  },
+  "notes": "rho_o dentro de 714.3..1208.3 pero rho_60 queda fijado en 800.9: 'convergence not achieved after 15 iterations' (la tabla muestra iteraciones m=0..14) y 'Density is outside limits of procedure'.",
+  "tolerance": null
+ },
+ {
+  "id": "5.3-t58.82",
+  "section": "11.1.5.2/11.1.5.3",
+  "page": 35,
+  "inputs": {
+   "t_f_90": 58.82
+  },
+  "expected": {
+   "t_f_68": 58.8266
+  },
+  "notes": "Tabla del ejemplo 11.1.5.2 (4 decimales).",
+  "tolerance": {
+   "abs": 5e-05
+  }
+ },
+ {
+  "id": "5.3-t60.62",
+  "section": "11.1.5.2/11.1.5.3",
+  "page": 35,
+  "inputs": {
+   "t_f_90": 60.62
+  },
+  "expected": {
+   "t_f_68": 60.627
+  },
+  "notes": "Tabla del ejemplo 11.1.5.2 (4 decimales).",
+  "tolerance": {
+   "abs": 5e-05
+  }
+ },
+ {
+  "id": "5.3-t68.36",
+  "section": "11.1.5.2/11.1.5.3",
+  "page": 35,
+  "inputs": {
+   "t_f_90": 68.36
+  },
+  "expected": {
+   "t_f_68": 68.369
+  },
+  "notes": "Tabla del ejemplo 11.1.5.2 (4 decimales).",
+  "tolerance": {
+   "abs": 5e-05
+  }
+ },
+ {
+  "id": "5.3-t77.0",
+  "section": "11.1.5.2/11.1.5.3",
+  "page": 35,
+  "inputs": {
+   "t_f_90": 77.0
+  },
+  "expected": {
+   "t_f_68": 77.0113
+  },
+  "notes": "Tabla del ejemplo 11.1.5.2 (4 decimales).",
+  "tolerance": {
+   "abs": 5e-05
+  }
+ },
+ {
+  "id": "5.3-t85.28",
+  "section": "11.1.5.2/11.1.5.3",
+  "page": 35,
+  "inputs": {
+   "t_f_90": 85.28
+  },
+  "expected": {
+   "t_f_68": 85.2934
+  },
+  "notes": "Tabla del ejemplo 11.1.5.2 (4 decimales).",
+  "tolerance": {
+   "abs": 5e-05
+  }
+ },
+ {
+  "id": "5.3-t91.22",
+  "section": "11.1.5.2/11.1.5.3",
+  "page": 35,
+  "inputs": {
+   "t_f_90": 91.22
+  },
+  "expected": {
+   "t_f_68": 91.235
+  },
+  "notes": "Tabla del ejemplo 11.1.5.2 (4 decimales).",
+  "tolerance": {
+   "abs": 5e-05
+  }
+ },
+ {
+  "id": "5.3-t95.72",
+  "section": "11.1.5.2/11.1.5.3",
+  "page": 35,
+  "inputs": {
+   "t_f_90": 95.72
+  },
+  "expected": {
+   "t_f_68": 95.7362
+  },
+  "notes": "Tabla del ejemplo 11.1.5.2 (4 decimales).",
+  "tolerance": {
+   "abs": 5e-05
+  }
+ },
+ {
+  "id": "5.3-t104.36",
+  "section": "11.1.5.2/11.1.5.3",
+  "page": 35,
+  "inputs": {
+   "t_f_90": 104.36
+  },
+  "expected": {
+   "t_f_68": 104.3785
+  },
+  "notes": "Tabla del ejemplo 11.1.5.2 (4 decimales).",
+  "tolerance": {
+   "abs": 5e-05
+  }
+ },
+ {
+  "id": "5.3-t107.6",
+  "section": "11.1.5.2/11.1.5.3",
+  "page": 35,
+  "inputs": {
+   "t_f_90": 107.6
+  },
+  "expected": {
+   "t_f_68": 107.6194
+  },
+  "notes": "Tabla del ejemplo 11.1.5.2 (4 decimales).",
+  "tolerance": {
+   "abs": 5e-05
+  }
+ },
+ {
+  "id": "5.3-t112.82",
+  "section": "11.1.5.2/11.1.5.3",
+  "page": 35,
+  "inputs": {
+   "t_f_90": 112.82
+  },
+  "expected": {
+   "t_f_68": 112.8408
+  },
+  "notes": "Tabla del ejemplo 11.1.5.2 (4 decimales).",
+  "tolerance": {
+   "abs": 5e-05
+  }
+ },
+ {
+  "id": "5.3-t-27.7-full",
+  "section": "11.1.5.3",
+  "page": 44,
+  "inputs": {
+   "t_f_90": -27.7
+  },
+  "expected": {
+   "t_f_68": -27.712499233089
+  },
+  "notes": "t* impreso en ejemplos 11.1.6.1/11.1.7.2 (12 decimales).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "5.3-t301.93-full",
+  "section": "11.1.5.3",
+  "page": 45,
+  "inputs": {
+   "t_f_90": 301.93
+  },
+  "expected": {
+   "t_f_68": 301.993163042978
+  },
+  "notes": "t* impreso en ejemplos 11.1.6.1/11.1.7.2 (12 decimales).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "5.3-t48.04-full",
+  "section": "11.1.5.3",
+  "page": 46,
+  "inputs": {
+   "t_f_90": 48.04
+  },
+  "expected": {
+   "t_f_68": 48.043878159606
+  },
+  "notes": "t* impreso en ejemplos 11.1.6.1/11.1.7.2 (12 decimales).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "5.3-t55.9-full",
+  "section": "11.1.5.3",
+  "page": 48,
+  "inputs": {
+   "t_f_90": 55.9
+  },
+  "expected": {
+   "t_f_68": 55.905838569594
+  },
+  "notes": "t* impreso en ejemplos 11.1.6.1/11.1.7.2 (12 decimales).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "5.3-t27.3-full",
+  "section": "11.1.5.3",
+  "page": 49,
+  "inputs": {
+   "t_f_90": 27.3
+  },
+  "expected": {
+   "t_f_68": 27.298898616759
+  },
+  "notes": "t* impreso en ejemplos 11.1.6.1/11.1.7.2 (12 decimales).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "5.3-t97.7-full",
+  "section": "11.1.5.3",
+  "page": 50,
+  "inputs": {
+   "t_f_90": 97.7
+  },
+  "expected": {
+   "t_f_68": 97.71672995169
+  },
+  "notes": "t* impreso en ejemplos 11.1.6.1/11.1.7.2 (12 decimales).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "5.3-t129.3-full",
+  "section": "11.1.5.3",
+  "page": 51,
+  "inputs": {
+   "t_f_90": 129.3
+  },
+  "expected": {
+   "t_f_68": 129.325201088023
+  },
+  "notes": "t* impreso en ejemplos 11.1.6.1/11.1.7.2 (12 decimales).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "5.3-t200-full",
+  "section": "11.1.5.3",
+  "page": 54,
+  "inputs": {
+   "t_f_90": 200
+  },
+  "expected": {
+   "t_f_68": 200.043348977974
+  },
+  "notes": "t* impreso en ejemplos 11.1.6.1/11.1.7.2 (12 decimales).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "5.3-t59-full",
+  "section": "11.1.5.3",
+  "page": 104,
+  "inputs": {
+   "t_f_90": 59
+  },
+  "expected": {
+   "t_f_68": 59.006621316269
+  },
+  "notes": "t* impreso en ejemplos 11.1.6.1/11.1.7.2 (12 decimales).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "5.4-5.34",
+  "section": "11.1.5.4",
+  "page": 38,
+  "inputs": {
+   "x": 5.34,
+   "delta": 0.05
+  },
+  "expected": {
+   "x_round": 5.35
+  },
+  "notes": "Ejemplo de la norma (10.05 -> 10.0: empate, al par).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "5.4--5.34",
+  "section": "11.1.5.4",
+  "page": 38,
+  "inputs": {
+   "x": -5.34,
+   "delta": 0.05
+  },
+  "expected": {
+   "x_round": -5.35
+  },
+  "notes": "Ejemplo de la norma (10.05 -> 10.0: empate, al par).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "5.4-10.05",
+  "section": "11.1.5.4",
+  "page": 39,
+  "inputs": {
+   "x": 10.05,
+   "delta": 0.1
+  },
+  "expected": {
+   "x_round": 10.0
+  },
+  "notes": "Ejemplo de la norma (10.05 -> 10.0: empate, al par).",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6C-0.00047-90.0",
+  "section": "11.1.8.23 (Tabla 6C/24C)",
+  "page": 188,
+  "inputs": {
+   "commodity": "C",
+   "alpha_60": 0.00047,
+   "rho_60": null,
+   "t_f": 90.0,
+   "p_psig": 0
+  },
+  "expected": {
+   "ctl_rounded": 0.98584
+  },
+  "notes": "Tabla 6C: solo CTL, P=0 psig, sin densidad (rho_60 no interviene en CTL con alpha dado). El codigo 4f1216d solo lo reproduce pasando rho=0 como centinela; con None lanza TypeError.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6C-0.0004706-95.0",
+  "section": "11.1.8.23 (Tabla 6C/24C)",
+  "page": 188,
+  "inputs": {
+   "commodity": "C",
+   "alpha_60": 0.0004706,
+   "rho_60": null,
+   "t_f": 95.0,
+   "p_psig": 0
+  },
+  "expected": {
+   "ctl_rounded": 0.98345
+  },
+  "notes": "Tabla 6C: solo CTL, P=0 psig, sin densidad (rho_60 no interviene en CTL con alpha dado). El codigo 4f1216d solo lo reproduce pasando rho=0 como centinela; con None lanza TypeError.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "6C-0.0004703-92.5",
+  "section": "11.1.8.23 (Tabla 6C/24C)",
+  "page": 188,
+  "inputs": {
+   "commodity": "C",
+   "alpha_60": 0.0004703,
+   "rho_60": null,
+   "t_f": 92.5,
+   "p_psig": 0
+  },
+  "expected": {
+   "ctl_rounded": 0.98464
+  },
+  "notes": "Tabla 6C: solo CTL, P=0 psig, sin densidad (rho_60 no interviene en CTL con alpha dado). El codigo 4f1216d solo lo reproduce pasando rho=0 como centinela; con None lanza TypeError.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "54C-0.0009-35.0",
+  "section": "11.1.8.24 (Tabla 54C)",
+  "page": 191,
+  "inputs": {
+   "commodity": "C",
+   "alpha_60_per_C": 0.0009,
+   "rho_T": null,
+   "T_base_c": 15,
+   "t_c": 35.0,
+   "p": 0,
+   "p_unit": "kPa"
+  },
+  "expected": {
+   "ctl_rounded": 0.98192
+  },
+  "notes": "Tabla 54C: alpha en 1/C (0.2e-6 de paso), P=0 kPa, solo CTL a 15 C. El codigo 4f1216d solo lo reproduce pasando rho=0 como centinela; con None lanza TypeError.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "54C-0.0009012-37.5",
+  "section": "11.1.8.24 (Tabla 54C)",
+  "page": 191,
+  "inputs": {
+   "commodity": "C",
+   "alpha_60_per_C": 0.0009012,
+   "rho_T": null,
+   "T_base_c": 15,
+   "t_c": 37.5,
+   "p": 0,
+   "p_unit": "kPa"
+  },
+  "expected": {
+   "ctl_rounded": 0.97962
+  },
+  "notes": "Tabla 54C: alpha en 1/C (0.2e-6 de paso), P=0 kPa, solo CTL a 15 C. El codigo 4f1216d solo lo reproduce pasando rho=0 como centinela; con None lanza TypeError.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ },
+ {
+  "id": "54C-0.0009006-36.3",
+  "section": "11.1.8.24 (Tabla 54C)",
+  "page": 191,
+  "inputs": {
+   "commodity": "C",
+   "alpha_60_per_C": 0.0009006,
+   "rho_T": null,
+   "T_base_c": 15,
+   "t_c": 36.3,
+   "p": 0,
+   "p_unit": "kPa"
+  },
+  "expected": {
+   "ctl_rounded": 0.98072
+  },
+  "notes": "Tabla 54C: alpha en 1/C (0.2e-6 de paso), P=0 kPa, solo CTL a 15 C. El codigo 4f1216d solo lo reproduce pasando rho=0 como centinela; con None lanza TypeError.",
+  "tolerance": {
+   "rel": 1e-08,
+   "comment": "La norma exige coincidir al menos 8 cifras significativas (11.1.5, pag. 29-30 del PDF); los *_rounded deben ser exactos."
+  }
+ }
+]
