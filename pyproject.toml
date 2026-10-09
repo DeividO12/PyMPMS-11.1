@@ -38,9 +38,10 @@ where = ["src"]
 api_mpms = ["py.typed"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["tests", "docs/api", "README.md"]
 pythonpath = ["src"]
-addopts = "-ra --strict-markers"
+addopts = "-ra --strict-markers --doctest-glob=*.md"
+doctest_optionflags = ["ELLIPSIS", "NORMALIZE_WHITESPACE"]
 
 [tool.ruff]
 line-length = 110
