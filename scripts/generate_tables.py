@@ -1,13 +1,14 @@
-from exceptions.convergence import MPMSConvergenceError
-from mpms_11_1.section_5_1 import API_to_rho, rho_to_API, gamma_t_to_rho, rho_to_gamma_t
-from mpms_11_1.section_5_4 import api_round
-from mpms_11_1.section_6_1 import correct_base_to_alternate
-from mpms_11_1.section_6_2 import correct_observed_to_base
-
-import math
-import pandas as pd
 import numpy as np
-from typing import Optional, Tuple
+import pandas as pd
+
+from api_mpms.exceptions.convergence import MPMSConvergenceError
+from api_mpms.exceptions.validation import MPMSValidationError
+from api_mpms.mpms_11_1.section_5_1 import API_to_rho, rho_to_API, gamma_t_to_rho, rho_to_gamma_t
+from api_mpms.mpms_11_1.section_5_4 import api_round
+from api_mpms.mpms_11_1.section_6_1 import correct_base_to_alternate
+from api_mpms.mpms_11_1.section_6_2 import correct_observed_to_base
+
+_CALC_ERRORS = (MPMSConvergenceError, MPMSValidationError)
 
 def generar_tabla_5a():
     # Paso 1: Presión fija a 0 psig
@@ -42,7 +43,7 @@ def generar_tabla_5a():
                 # Paso 6: Convertir de vuelta a API y redondear
                 api_60_raw = rho_to_API(rho_60)
                 api_60 = api_round(api_60_raw, 0.1)
-            except:
+            except _CALC_ERRORS:
                 api_60 = '-'
             
             row[f"T_{t_obs}"] = api_60
@@ -90,7 +91,7 @@ def generar_tabla_5b():
                 # Paso 6: Convertir de vuelta a API y redondear
                 api_60_raw = rho_to_API(rho_60)
                 api_60 = api_round(api_60_raw, 0.1)
-            except:
+            except _CALC_ERRORS:
                 api_60 = '-'
             
             row[f"T_{t_obs}"] = api_60
@@ -138,7 +139,7 @@ def generar_tabla_5d():
                 # Paso 6: Convertir de vuelta a API y redondear
                 api_60_raw = rho_to_API(rho_60)
                 api_60 = api_round(api_60_raw, 0.1)
-            except MPMSConvergenceError:
+            except _CALC_ERRORS:
                 api_60 = '-'
             
             row[f"T_{t_obs}"] = api_60
@@ -184,8 +185,7 @@ def generar_tabla_6a():
                     rho_60=rho_60, t_f=t_obs, p_psig=p_o, commodity_group=commodity_group
                 )
                 CTL_60 = api_round(CTL_60, 0.00001)
-            except Exception as e:
-                print(e)
+            except _CALC_ERRORS:
                 CTL_60 = '-'
             
             row[f"T_{t_obs}"] = CTL_60
@@ -231,7 +231,7 @@ def generar_tabla_6b():
                     rho_60=rho_60, t_f=t_obs, p_psig=p_o, commodity_group=commodity_group
                 )
                 CTL_60 = api_round(CTL_60, 0.00001)
-            except:
+            except _CALC_ERRORS:
                 CTL_60 = '-'
             
             row[f"T_{t_obs}"] = CTL_60
@@ -277,7 +277,7 @@ def generar_tabla_6d():
                     rho_60=rho_60, t_f=t_obs, p_psig=p_o, commodity_group=commodity_group
                 )
                 CTL_60 = api_round(CTL_60, 0.00001)
-            except:
+            except _CALC_ERRORS:
                 CTL_60 = '-'
             
             row[f"T_{t_obs}"] = CTL_60
@@ -314,7 +314,7 @@ def generar_tabla_23a():
             t_obs = api_round(t_obs_raw, 0.1)
             
             # Paso 4: Convertir γ densidad relativa a kg/m³
-            rho_o = gamma_t_to_rho(t_obs_raw)
+            rho_o = gamma_t_to_rho(rel_obs)
             
             # Paso 5: Determinar densidad base (rho_60)
             # Usar tu función: correct_observed_to_base
@@ -325,7 +325,7 @@ def generar_tabla_23a():
                 # Paso 6: Convertir de vuelta a API y redondear
                 gamma_60_raw = rho_to_gamma_t(rho_60)
                 gamma_60 = api_round(gamma_60_raw, 0.0001)
-            except:
+            except _CALC_ERRORS:
                 gamma_60 = '-'
             
             row[f"T_{t_obs}"] = gamma_60
