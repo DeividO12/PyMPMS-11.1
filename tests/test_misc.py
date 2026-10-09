@@ -63,7 +63,8 @@ def test_non_convergence_keeps_last_result(monkeypatch):
 def test_ctl_from_observed_api_is_direct_procedure(api_obs, t, ct):
     """NORM-T10: el CTL sale directamente de 11.1.6.2, sin redondear la densidad base."""
     expected = correct_observed_to_base(rho_o=api_to_rho(api_obs), t_o=t, p_o=0, commodity_type=ct)
-    assert tables.ctl_from_observed_api(api_obs=api_obs, t_f_obs=t, commodity_type=ct) == expected.ctpl_rounded
+    got = tables.ctl_from_observed_api(api_obs=api_obs, t_f_obs=t, commodity_type=ct)
+    assert got == expected.ctpl_rounded
 
 
 def test_ctl_from_observed_relative_density():

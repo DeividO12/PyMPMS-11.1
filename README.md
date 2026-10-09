@@ -31,7 +31,7 @@ The project is private and intended for internal use. From a clone of the reposi
 ```bash
 pip install .              # library
 pip install ".[tables]"    # + numpy/pandas for the table generator
-pip install -e ".[dev]"    # development (pytest, hypothesis, ruff, mypy)
+pip install -e ".[dev]"    # development (pytest, pytest-cov, ruff, mypy)
 ```
 
 The distribution is named `pympms-11-1`; the import package is `api_mpms`.
