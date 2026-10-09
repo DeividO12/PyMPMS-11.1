@@ -41,3 +41,6 @@ coverage.xml
 .DS_Store
 .vscode/
 .idea/
+
+# --- Reference documents ---
+PDFs/
