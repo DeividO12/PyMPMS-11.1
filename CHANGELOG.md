@@ -36,4 +36,4 @@ Correcciones de la auditoría de código del 2026-10-09 ([informe](docs/informe_
 
 - 11.1.6.3 `correct_observed_to_alternate`; `ctl_from_alpha`; tablas `table_5x`, `table_23x`, `table_53x`, `table_59x`.
 - Generador de las 28 tablas de 11.1.8 con ejecución en paralelo.
-- 480 pruebas, entre ellas 105 ejemplos resueltos y 253 valores de tablas de la norma.
+- 493 pruebas (cobertura 99 %), entre ellas 105 ejemplos resueltos y 253 valores de tablas de la norma.
