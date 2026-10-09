@@ -3,7 +3,7 @@ import pandas as pd
 
 from api_mpms.exceptions.convergence import MPMSConvergenceError
 from api_mpms.exceptions.validation import MPMSValidationError
-from api_mpms.mpms_11_1.section_5_1 import API_to_rho, rho_to_API, gamma_t_to_rho, rho_to_gamma_t
+from api_mpms.mpms_11_1.section_5_1 import api_to_rho, rho_to_api, gamma_t_to_rho, rho_to_gamma_t
 from api_mpms.mpms_11_1.section_5_4 import api_round
 from api_mpms.mpms_11_1.section_6_1 import correct_base_to_alternate
 from api_mpms.mpms_11_1.section_6_2 import correct_observed_to_base
@@ -32,7 +32,7 @@ def generar_tabla_5a():
             t_obs = api_round(t_obs_raw, 0.1)
             
             # Paso 4: Convertir API a kg/m³
-            rho_o = API_to_rho(api_obs)
+            rho_o = api_to_rho(api_obs)
             
             # Paso 5: Determinar densidad base (rho_60)
             # Usar tu función: correct_observed_to_base
@@ -41,7 +41,7 @@ def generar_tabla_5a():
                     rho_o=rho_o, t_o=t_obs, p_o=p_o, commodity_type=commodity_group
                 )
                 # Paso 6: Convertir de vuelta a API y redondear
-                api_60_raw = rho_to_API(rho_60)
+                api_60_raw = rho_to_api(rho_60)
                 api_60 = api_round(api_60_raw, 0.1)
             except _CALC_ERRORS:
                 api_60 = '-'
@@ -80,7 +80,7 @@ def generar_tabla_5b():
             t_obs = api_round(t_obs_raw, 0.1)
             
             # Paso 4: Convertir API a kg/m³
-            rho_o = API_to_rho(api_obs)
+            rho_o = api_to_rho(api_obs)
             
             # Paso 5: Determinar densidad base (rho_60)
             # Usar tu función: correct_observed_to_base
@@ -89,7 +89,7 @@ def generar_tabla_5b():
                     rho_o=rho_o, t_o=t_obs, p_o=p_o, commodity_type=commodity_group
                 )
                 # Paso 6: Convertir de vuelta a API y redondear
-                api_60_raw = rho_to_API(rho_60)
+                api_60_raw = rho_to_api(rho_60)
                 api_60 = api_round(api_60_raw, 0.1)
             except _CALC_ERRORS:
                 api_60 = '-'
@@ -128,7 +128,7 @@ def generar_tabla_5d():
             t_obs = api_round(t_obs_raw, 0.1)
             
             # Paso 4: Convertir API a kg/m³
-            rho_o = API_to_rho(api_obs)
+            rho_o = api_to_rho(api_obs)
             
             # Paso 5: Determinar densidad base (rho_60)
             # Usar tu función: correct_observed_to_base
@@ -137,7 +137,7 @@ def generar_tabla_5d():
                     rho_o=rho_o, t_o=t_obs, p_o=p_o, commodity_type=commodity_group
                 )
                 # Paso 6: Convertir de vuelta a API y redondear
-                api_60_raw = rho_to_API(rho_60)
+                api_60_raw = rho_to_api(rho_60)
                 api_60 = api_round(api_60_raw, 0.1)
             except _CALC_ERRORS:
                 api_60 = '-'
@@ -176,13 +176,13 @@ def generar_tabla_6a():
             t_obs = api_round(t_obs_raw, 0.1)
             
             # Paso 4: Convertir API a kg/m³
-            rho_60 = API_to_rho(api_60)
+            rho_60 = api_to_rho(api_60)
             
             # Paso 5: Determinar densidad base (rho_60)
             # Usar tu función: correct_observed_to_base
             try:
                 _,CTL_60, _, _, _, _ = correct_base_to_alternate(
-                    rho_60=rho_60, t_f=t_obs, p_psig=p_o, commodity_group=commodity_group
+                    rho_60=rho_60, t_f=t_obs, p_psig=p_o, commodity_type=commodity_group
                 )
                 CTL_60 = api_round(CTL_60, 0.00001)
             except _CALC_ERRORS:
@@ -222,13 +222,13 @@ def generar_tabla_6b():
             t_obs = api_round(t_obs_raw, 0.1)
             
             # Paso 4: Convertir API a kg/m³
-            rho_60 = API_to_rho(api_60)
+            rho_60 = api_to_rho(api_60)
             
             # Paso 5: Determinar densidad base (rho_60)
             # Usar tu función: correct_observed_to_base
             try:
                 _,CTL_60, _, _, _, _ = correct_base_to_alternate(
-                    rho_60=rho_60, t_f=t_obs, p_psig=p_o, commodity_group=commodity_group
+                    rho_60=rho_60, t_f=t_obs, p_psig=p_o, commodity_type=commodity_group
                 )
                 CTL_60 = api_round(CTL_60, 0.00001)
             except _CALC_ERRORS:
@@ -268,13 +268,13 @@ def generar_tabla_6d():
             t_obs = api_round(t_obs_raw, 0.1)
             
             # Paso 4: Convertir API a kg/m³
-            rho_60 = API_to_rho(api_60)
+            rho_60 = api_to_rho(api_60)
             
             # Paso 5: Determinar densidad base (rho_60)
             # Usar tu función: correct_observed_to_base
             try:
                 _,CTL_60, _, _, _, _ = correct_base_to_alternate(
-                    rho_60=rho_60, t_f=t_obs, p_psig=p_o, commodity_group=commodity_group
+                    rho_60=rho_60, t_f=t_obs, p_psig=p_o, commodity_type=commodity_group
                 )
                 CTL_60 = api_round(CTL_60, 0.00001)
             except _CALC_ERRORS:

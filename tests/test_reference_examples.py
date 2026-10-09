@@ -21,7 +21,7 @@ BASE_TO_ALTERNATE = [
 @pytest.mark.parametrize("rho_60,t_f,p,ct,expected", BASE_TO_ALTERNATE)
 def test_base_to_alternate(rho_60, t_f, p, ct, expected):
     _, ctl, fp, cpl, ctpl, _ = correct_base_to_alternate(
-        rho_60=rho_60, t_f=t_f, p_psig=p, commodity_group=ct
+        rho_60=rho_60, t_f=t_f, p_psig=p, commodity_type=ct
     )
     assert (ctl, fp, cpl, ctpl) == pytest.approx(expected, abs=ABS)
 

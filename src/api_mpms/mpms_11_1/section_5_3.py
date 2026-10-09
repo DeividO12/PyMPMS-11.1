@@ -20,7 +20,7 @@ def its90_to_ipts68(
     *,
     t_f_90: Optional[float] = None,
     t_c_90: Optional[float] = None,
-    out_fahrenheit: Optional[bool] = True,
+    out_fahrenheit: bool = True,
 ) -> float:
     """
     API MPMS 11.1.5.3
@@ -30,9 +30,9 @@ def its90_to_ipts68(
     Parameters
     ----------
     t_f_90 : float, optional
-        Temperature in °F (ITS-90 basis)
+        Temperature in °F (ITS-90 basis). Mutually exclusive with ``t_c_90``.
     t_c_90 : float, optional
-        Temperature in °C (ITS-90 basis)
+        Temperature in °C (ITS-90 basis). Mutually exclusive with ``t_f_90``.
     out_fahrenheit : bool, default True
         Return value in °F if True, otherwise °C
 
@@ -42,9 +42,9 @@ def its90_to_ipts68(
         Temperature converted to IPTS-68
     """
 
-    if t_f_90 is None and t_c_90 is None:
+    if (t_f_90 is None) == (t_c_90 is None):
         raise MPMSValidationError(
-            "Either t_f_90 or t_c_90 must be provided"
+            "Exactly one of t_f_90 or t_c_90 must be provided"
         )
 
     # Convert input to Celsius if needed

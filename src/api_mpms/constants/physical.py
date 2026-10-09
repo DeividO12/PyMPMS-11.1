@@ -1,0 +1,14 @@
+# api_mpms/constants/physical.py
+
+"""Constantes físicas y límites de aplicación compartidos por toda la librería."""
+
+# Densidad del agua a 60 °F (kg/m³) usada para °API y densidad relativa (11.1.5.1)
+WATER_DENSITY_KGM3 = 999.016
+
+# Condiciones base (ITS-90)
+T_BASE_F = 60.0
+
+# Límites de aplicación de temperatura y presión (11.1.2.3)
+T_MIN_F = -58.0
+T_MAX_F = 302.0
+P_MAX_PSIG = 1500.0
