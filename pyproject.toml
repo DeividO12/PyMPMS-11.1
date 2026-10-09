@@ -4,11 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pympms-11-1"
-version = "0.1.0"
+dynamic = ["version"]
 description = "Python implementation of API MPMS Chapter 11.1 for petroleum measurement"
 readme = "README.md"
 requires-python = ">=3.9"
 license = { file = "LICENSE" }
+dependencies = []
 
 authors = [
   { name = "Deivid Cubillos" }
@@ -20,8 +21,30 @@ classifiers = [
   "Topic :: Scientific/Engineering"
 ]
 
+[project.optional-dependencies]
+tables = ["numpy>=1.24", "pandas>=2.0"]
+dev = ["pytest>=8", "hypothesis>=6", "ruff>=0.5", "mypy>=1.10"]
+
 [tool.setuptools]
 package-dir = {"" = "src"}
 
+[tool.setuptools.dynamic]
+version = { attr = "api_mpms.__version__" }
+
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+api_mpms = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra --strict-markers"
+
+[tool.ruff]
+line-length = 110
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "E722"]
