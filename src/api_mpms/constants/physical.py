@@ -12,3 +12,7 @@ T_BASE_F = 60.0
 T_MIN_F = -58.0
 T_MAX_F = 302.0
 P_MAX_PSIG = 1500.0
+
+# Límites del coeficiente de expansión térmica a 60 °F para el tipo C (°F⁻¹) (11.1.6.1 paso 1)
+ALPHA_60_MIN_F = 230.0e-6
+ALPHA_60_MAX_F = 930.0e-6

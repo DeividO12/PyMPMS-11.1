@@ -3,7 +3,11 @@
 import math
 from typing import Optional
 
-from api_mpms.constants.commodity_groups import CommodityGroup, resolve_commodity_group
+from api_mpms.constants.commodity_groups import (
+    COMMODITY_TYPE_BOUNDS,
+    CommodityGroup,
+    resolve_commodity_group,
+)
 from api_mpms.exceptions.validation import MPMSValidationError
 from api_mpms.mpms_11_1.section_5_3 import its90_to_ipts68
 from api_mpms.results import BaseToAlternateResult
@@ -121,6 +125,12 @@ def correct_base_to_alternate(
         group = None
     else:
         ct = validate_commodity_type(commodity_type)
+        rho_min, rho_max = COMMODITY_TYPE_BOUNDS[ct]
+        if not (rho_min <= rho_60 <= rho_max):
+            raise MPMSValidationError(
+                f"rho_60 {rho_60} kg/m³ out of range for commodity type "
+                f"{ct.value.upper()} ({rho_min} to {rho_max})"
+            )
         group = resolve_commodity_group(rho_60, ct)
 
     # Step 2 – temperature shift

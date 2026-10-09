@@ -5,7 +5,13 @@ import numbers
 from typing import Optional, Union
 
 from api_mpms.constants.commodity_types import CommodityType
-from api_mpms.constants.physical import P_MAX_PSIG, T_MAX_F, T_MIN_F
+from api_mpms.constants.physical import (
+    ALPHA_60_MAX_F,
+    ALPHA_60_MIN_F,
+    P_MAX_PSIG,
+    T_MAX_F,
+    T_MIN_F,
+)
 from api_mpms.exceptions.validation import MPMSValidationError
 
 
@@ -13,6 +19,10 @@ _COMMODITY_VALUES = frozenset(ct.value for ct in CommodityType)
 
 
 def _as_finite_float(value, name: str) -> float:
+    if type(value) is float:  # camino rápido: caso más común
+        if not math.isfinite(value):
+            raise MPMSValidationError(f"{name} must be finite, got {value!r}")
+        return value
     if isinstance(value, bool) or not isinstance(value, numbers.Real):
         raise MPMSValidationError(f"{name} must be a number, got {value!r}")
     value = float(value)
@@ -40,10 +50,19 @@ def validate_pressure_psig(p: float) -> float:
     return max(p, 0.0)
 
 
+# Holgura relativa para que los bordes en °C⁻¹ (414e-6, 1674e-6) sigan dentro tras dividir por 1.8
+_ALPHA_REL_TOL = 1e-12
+
+
 def validate_alpha_60(alpha_60: float) -> float:
+    """Valida alpha_60 (°F⁻¹) contra los límites de 11.1.6.1 paso 1."""
     alpha_60 = _as_finite_float(alpha_60, "alpha_60")
-    if alpha_60 <= 0:
-        raise MPMSValidationError(f"alpha_60 must be > 0, got {alpha_60}")
+    if not (
+        ALPHA_60_MIN_F * (1 - _ALPHA_REL_TOL) <= alpha_60 <= ALPHA_60_MAX_F * (1 + _ALPHA_REL_TOL)
+    ):
+        raise MPMSValidationError(
+            f"alpha_60 {alpha_60} °F⁻¹ out of range ({ALPHA_60_MIN_F:g} to {ALPHA_60_MAX_F:g})"
+        )
     return alpha_60
 
 
