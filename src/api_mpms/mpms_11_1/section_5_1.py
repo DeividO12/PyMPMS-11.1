@@ -22,7 +22,7 @@ from api_mpms.exceptions.validation import MPMSValidationError
 
 def rho_to_api(rho: float) -> float:
     if rho <= 0:
-        raise MPMSValidationError(f"Density must be > 0 kg/m³, got {rho}")
+        raise MPMSValidationError(f"Density must be > 0 kg/m3, got {rho}")
     return (141.5 / (rho / WATER_DENSITY_KGM3)) - 131.5
 
 
@@ -40,7 +40,7 @@ def gamma_t_to_rho(gamma_t: float) -> float:
 
 def rho_to_gamma_t(rho: float) -> float:
     if rho <= 0:
-        raise MPMSValidationError(f"Density must be > 0 kg/m³, got {rho}")
+        raise MPMSValidationError(f"Density must be > 0 kg/m3, got {rho}")
     return rho / WATER_DENSITY_KGM3
 
 

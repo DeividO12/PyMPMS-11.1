@@ -10,10 +10,13 @@ from api_mpms.constants.physical import (
     ALPHA_60_MIN_F,
     METRIC_BASE_TEMPERATURES_C,
     P_MAX_PSIG,
+    T_MAX_C,
     T_MAX_F,
+    T_MIN_C,
     T_MIN_F,
 )
 from api_mpms.exceptions.validation import MPMSRangeError, MPMSValidationError
+from api_mpms.mpms_11_1.section_5_1 import pressure_to_psig
 
 
 _COMMODITY_VALUES = frozenset(ct.value for ct in CommodityType)
@@ -36,7 +39,7 @@ def validate_temperature_f(t: float) -> float:
     t = _as_finite_float(t, "Temperature")
     if not (T_MIN_F <= t <= T_MAX_F):
         raise MPMSRangeError(
-            f"Temperature {t} °F out of range ({T_MIN_F:g} to {T_MAX_F:g})"
+            f"Temperature {t} degF out of range ({T_MIN_F:g} to {T_MAX_F:g} degF)"
         )
     return t
 
@@ -50,8 +53,34 @@ def validate_metric_base_temperature(t_base_c: float) -> float:
     """Temperatura base métrica: solo 15 °C o 20 °C (11.1.3.1)."""
     t_base_c = _as_finite_float(t_base_c, "t_base_c")
     if t_base_c not in METRIC_BASE_TEMPERATURES_C:
-        raise MPMSValidationError(f"t_base_c must be 15 or 20 °C, got {t_base_c}")
+        raise MPMSValidationError(f"t_base_c must be 15 or 20 degC, got {t_base_c}")
     return t_base_c
+
+
+def validate_temperature_c(t_c: float) -> float:
+    """Temperatura en °C (ITS-90) dentro de −50.00 a 150.00 °C (11.1.2.3)."""
+    t_c = _as_finite_float(t_c, "Temperature")
+    if not (T_MIN_C <= t_c <= T_MAX_C):
+        raise MPMSRangeError(
+            f"Temperature {t_c} degC out of range ({T_MIN_C:g} to {T_MAX_C:g} degC)"
+        )
+    return t_c
+
+
+def validate_metric_pressure(p: float, unit: str) -> float:
+    """
+    Presión manométrica en kPa o bar → psig. El límite de 1500 psig se informa
+    también en la unidad del usuario. Los valores negativos se toman como 0.
+    """
+    p = _as_finite_float(p, "Pressure")
+    psig_per_unit = pressure_to_psig(1.0, unit)
+    p_psig = pressure_to_psig(p, unit)
+    if p_psig > P_MAX_PSIG:
+        raise MPMSRangeError(
+            f"Pressure {p} {unit} ({p_psig:.3f} psig) out of range "
+            f"(0 to {P_MAX_PSIG / psig_per_unit:.6g} {unit} = {P_MAX_PSIG:g} psig)"
+        )
+    return max(p_psig, 0.0)
 
 
 def validate_pressure_psig(p: float) -> float:
@@ -59,7 +88,7 @@ def validate_pressure_psig(p: float) -> float:
     p = _as_finite_float(p, "Pressure")
     if p > P_MAX_PSIG:
         raise MPMSRangeError(
-            f"Pressure {p} psig out of range (0–{P_MAX_PSIG:g})"
+            f"Pressure {p} psig out of range (0 to {P_MAX_PSIG:g} psig)"
         )
     return max(p, 0.0)
 
@@ -75,7 +104,7 @@ def validate_alpha_60(alpha_60: float) -> float:
         ALPHA_60_MIN_F * (1 - _ALPHA_REL_TOL) <= alpha_60 <= ALPHA_60_MAX_F * (1 + _ALPHA_REL_TOL)
     ):
         raise MPMSRangeError(
-            f"alpha_60 {alpha_60} °F⁻¹ out of range ({ALPHA_60_MIN_F:g} to {ALPHA_60_MAX_F:g})"
+            f"alpha_60 {alpha_60} 1/degF out of range ({ALPHA_60_MIN_F:g} to {ALPHA_60_MAX_F:g} 1/degF)"
         )
     return alpha_60
 
@@ -83,7 +112,7 @@ def validate_alpha_60(alpha_60: float) -> float:
 def validate_density(rho: float, name: str = "Density") -> float:
     rho = _as_finite_float(rho, name)
     if rho <= 0:
-        raise MPMSValidationError(f"{name} must be > 0 kg/m³, got {rho}")
+        raise MPMSValidationError(f"{name} must be > 0 kg/m3, got {rho}")
     return rho
 
 

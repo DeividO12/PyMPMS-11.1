@@ -15,6 +15,8 @@ T_BASE_F = 60.0
 # Límites de aplicación de temperatura y presión (11.1.2.3)
 T_MIN_F = -58.0
 T_MAX_F = 302.0
+T_MIN_C = -50.0
+T_MAX_C = 150.0
 P_MAX_PSIG = 1500.0
 
 # Temperaturas base métricas aceptadas (11.1.3.1)

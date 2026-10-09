@@ -2,17 +2,17 @@
 
 from typing import Optional
 
-from api_mpms.mpms_11_1.section_5_1 import (
-    alpha_c_to_alpha_f,
-    celsius_to_fahrenheit,
-    fp_from_psi,
-    pressure_to_psig,
-)
+from api_mpms.exceptions.validation import MPMSRangeError
+from api_mpms.mpms_11_1.section_5_1 import alpha_c_to_alpha_f, celsius_to_fahrenheit, fp_from_psi
 from api_mpms.mpms_11_1.section_5_4 import api_round
 from api_mpms.mpms_11_1.section_6_1 import CTPL_DELTA, correct_base_to_alternate
 from api_mpms.mpms_11_1.section_6_2 import correct_observed_to_base
 from api_mpms.results import MetricBaseToAlternateResult
-from api_mpms.validators.inputs import validate_metric_base_temperature, validate_pressure
+from api_mpms.validators.inputs import (
+    validate_metric_base_temperature,
+    validate_metric_pressure,
+    validate_temperature_c,
+)
 
 
 def correct_metric_base_to_alternate(
@@ -50,20 +50,28 @@ def correct_metric_base_to_alternate(
         para el tipo C.
     """
     # Step 1 – convertir a unidades del sistema inglés
-    t_base_f = celsius_to_fahrenheit(validate_metric_base_temperature(t_base_c))
+    t_base_c = validate_metric_base_temperature(t_base_c)
+    t_c = validate_temperature_c(t_c)
+    p_psig = validate_metric_pressure(p, pressure_unit)
+    t_base_f = celsius_to_fahrenheit(t_base_c)
     t_f = celsius_to_fahrenheit(t_c)
-    p_psig = pressure_to_psig(validate_pressure(p), pressure_unit)
     alpha_60 = alpha_c_to_alpha_f(alpha_60_c) if alpha_60_c is not None else None
 
-    # Step 2 – densidad a 60 °F y CTL de la base métrica a 60 °F
-    base = correct_observed_to_base(
-        rho_o=rho_base, t_o=t_base_f, p_o=0, commodity_type=commodity_type, alpha_60=alpha_60
-    )
-    # Step 3 – de 60 °F a las condiciones alternas
-    alt = correct_base_to_alternate(
-        rho_60=base.rho_60, t_f=t_f, p_psig=p_psig,
-        commodity_type=commodity_type, alpha_60=alpha_60,
-    )
+    try:
+        # Step 2 – densidad a 60 °F y CTL de la base métrica a 60 °F
+        base = correct_observed_to_base(
+            rho_o=rho_base, t_o=t_base_f, p_o=0, commodity_type=commodity_type, alpha_60=alpha_60
+        )
+        # Step 3 – de 60 °F a las condiciones alternas
+        alt = correct_base_to_alternate(
+            rho_60=base.rho_60, t_f=t_f, p_psig=p_psig,
+            commodity_type=commodity_type, alpha_60=alpha_60,
+        )
+    except MPMSRangeError as exc:
+        raise MPMSRangeError(
+            f"API MPMS 11.1.7.1 (rho_base={rho_base} kg/m3 at {t_base_c:g} degC, "
+            f"t_c={t_c} degC, p={p} {pressure_unit}): {exc}"
+        ) from exc
 
     # Step 4 – factores referidos a la base métrica
     ctl = alt.ctl / base.ctl

@@ -67,6 +67,6 @@ def resolve_commodity_group(rho: float, commodity_type: CommodityType) -> Commod
         return groups[-1]
     rho_min, rho_max = COMMODITY_TYPE_BOUNDS[commodity_type]
     raise MPMSRangeError(
-        f"rho_60 {rho} kg/m³ out of range for commodity type "
-        f"{commodity_type.value.upper()} ({rho_min} to {rho_max})"
+        f"rho_60 {rho} kg/m3 out of range for commodity type "
+        f"{commodity_type.value.upper()} ({rho_min} to {rho_max} kg/m3)"
     )

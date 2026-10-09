@@ -1,4 +1,13 @@
-"""Implementación en Python de API MPMS Capítulo 11.1 (2004)."""
+"""Implementación en Python de API MPMS Capítulo 11.1 (2004).
+
+API pública:
+
+- Procedimientos de corrección y resultados: este módulo (``api_mpms``).
+- Conversión de unidades y redondeo: ``api_mpms.conversions``.
+- Valores en formato de tabla (11.1.8): ``api_mpms.tables``.
+"""
+
+from api_mpms import conversions, tables
 
 from api_mpms.constants.commodity_types import CommodityType
 from api_mpms.exceptions.convergence import MPMSConvergenceError
@@ -31,6 +40,7 @@ __all__ = [
     "ObservedToAlternateResult",
     "ObservedToBaseResult",
     "api_round",
+    "conversions",
     "correct_base_to_alternate",
     "correct_metric_base_to_alternate",
     "correct_metric_observed_to_base",
@@ -38,4 +48,5 @@ __all__ = [
     "correct_observed_to_base",
     "ctl_from_alpha",
     "its90_to_ipts68",
+    "tables",
 ]

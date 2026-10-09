@@ -82,3 +82,27 @@ def test_ctl_from_observed_metric_density(func, t_base):
         rho_o=827.0, t_o_c=35.0, p_o=0, pressure_unit="kPa", t_base_c=t_base, commodity_type="A"
     )
     assert func(den_obs=827.0, t_c_obs=35.0, commodity_type="A") == expected.ctpl_rounded
+
+
+@pytest.mark.parametrize("call", [
+    lambda: correct_observed_to_base(rho_o=714.0, t_o=72.32, p_o=0, commodity_type="D"),
+    lambda: correct_observed_to_base(rho_o=823.7, t_o=303, p_o=0, commodity_type="A"),
+    lambda: correct_observed_to_base(rho_o=823.7, t_o=80, p_o=1501, commodity_type="A"),
+    lambda: correct_observed_to_base(rho_o=853.7, t_o=84.5, p_o=0, alpha_60=0.001),
+    lambda: correct_observed_to_base(rho_o=1195.0, t_o=302, p_o=0, commodity_type="A"),
+    lambda: correct_observed_to_base(rho_o=float("nan"), t_o=80, p_o=0, commodity_type="A"),
+    lambda: correct_metric_observed_to_base(rho_o=723.45, t_o_c=0.42, p_o=0, pressure_unit="kPa",
+                                            t_base_c=15, commodity_type="D"),
+    lambda: correct_metric_observed_to_base(rho_o=850, t_o_c=151, p_o=0, pressure_unit="kPa",
+                                            t_base_c=15, commodity_type="A"),
+    lambda: correct_metric_observed_to_base(rho_o=850, t_o_c=30, p_o=104, pressure_unit="bar",
+                                            t_base_c=15, commodity_type="A"),
+    lambda: correct_metric_observed_to_base(rho_o=850, t_o_c=30, p_o=0, pressure_unit="kPa",
+                                            t_base_c=17, commodity_type="A"),
+    lambda: tables.table_6x(api_base=100.5, t_f_obs=100, commodity_type="A"),
+])
+def test_error_messages_are_ascii(call):
+    """Los mensajes deben poder escribirse en consolas y logs cp1252 sin UnicodeEncodeError."""
+    with pytest.raises(MPMSValidationError) as exc:
+        call()
+    str(exc.value).encode("ascii")

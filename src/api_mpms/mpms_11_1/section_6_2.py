@@ -87,8 +87,8 @@ def correct_observed_to_base(
         lo, hi = OBSERVED_DENSITY_BOUNDS[ct]
         if not (lo <= rho_o <= hi):
             raise MPMSRangeError(
-                f"rho_o {rho_o} kg/m³ out of range for commodity type "
-                f"{ct.value.upper()} ({lo} to {hi})"
+                f"rho_o {rho_o} kg/m3 out of range for commodity type "
+                f"{ct.value.upper()} ({lo} to {hi} kg/m3)"
             )
         rho_min, rho_max = COMMODITY_TYPE_BOUNDS[ct]
 
@@ -138,11 +138,12 @@ def correct_observed_to_base(
         # Step 7 – la densidad base buscada queda fuera de los límites
         raise MPMSRangeError(
             f"rho_60 out of the limits of the procedure for commodity type "
-            f"{ct.value.upper()} ({rho_min} to {rho_max}): rho_o={rho_o}, t_o={t_o}, p_o={p_o}"
+            f"{ct.value.upper()} ({rho_min} to {rho_max} kg/m3): "
+            f"rho_o={rho_o} kg/m3, t_o={t_o} degF, p_o={p_o} psig"
         )
     raise MPMSConvergenceError(
         f"API MPMS 11.1.6.2 did not converge within {_MAX_ITER} iterations "
-        f"(rho_o={rho_o}, t_o={t_o}, p_o={p_o}, commodity_type={ct.value.upper()}, "
+        f"(rho_o={rho_o} kg/m3, t_o={t_o} degF, p_o={p_o} psig, commodity_type={ct.value.upper()}, "
         f"alpha_60={alpha_60})",
         last_result=_result(rho_eval, f, _MAX_ITER - 1),
     )
