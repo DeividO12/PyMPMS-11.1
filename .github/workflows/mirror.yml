@@ -44,3 +44,19 @@ jobs:
           else
             git push --force "$url" "${GITHUB_SHA}:${GITHUB_REF}"
           fi
+      - name: Diagnóstico del token (solo si falla)
+        if: failure()
+        env:
+          TOKEN: ${{ secrets.SYZ_RELEASE_TOKEN }}
+        run: |
+          # No imprime el token: solo a quién pertenece, sus alcances y si la organización exige SSO.
+          h=$(mktemp)
+          code=$(curl -s -o user.json -D "$h" -w '%{http_code}' -H "Authorization: token $TOKEN" https://api.github.com/user)
+          echo "GET /user -> HTTP $code"
+          echo "Usuario del token: $(python3 -c 'import json;print(json.load(open("user.json")).get("login"))')"
+          grep -iE '^x-oauth-scopes:' "$h" || echo "x-oauth-scopes: (sin cabecera: no es un token clásico)"
+          code=$(curl -s -o /dev/null -D "$h" -w '%{http_code}' -H "Authorization: token $TOKEN" \
+            https://api.github.com/repos/sistemasSYZ/PyMPMS-11.1)
+          echo "GET /repos/sistemasSYZ/PyMPMS-11.1 -> HTTP $code"
+          grep -iE '^x-github-sso:' "$h" || echo "x-github-sso: (sin cabecera: la organización no exige SSO a este token)"
+          echo "Guía: packaging/README.md §3 y §8"
