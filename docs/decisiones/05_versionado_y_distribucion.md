@@ -183,7 +183,7 @@ El workflow solo se ejecuta en el repositorio personal (condición sobre `github
 **Requisitos.**
 | Requisito | Responsable |
 |---|---|
-| Token de acceso (PAT) con escritura en `sistemasSYZ/PyMPMS-11.1`, guardado como secreto del repositorio personal. De grano fino si la organización lo admite; si no, uno clásico con alcance `repo`. No se reutiliza el token de la sesión de `gh`. | Usuario |
+| Token de acceso con escritura en `sistemasSYZ/PyMPMS-11.1`, guardado como secreto `SYZ_RELEASE_TOKEN` del repositorio personal. **Clásico con `repo` y `workflow`**: la cuenta es colaboradora externa de la organización y no puede usar tokens de grano fino sobre sus repositorios privados (ver [`packaging/README.md`](../../packaging/README.md#configuracion)). Configurado el 2026-10-13. | Usuario ✅ |
 | Unos 25 minutos de Actions por versión (los de Windows cuentan doble); cabe en los 2000 minutos mensuales del plan gratuito para repos privados | — |
 
 **Implementación.** [`packaging/`](../../packaging/README.md), [`release.yml`](../../.github/workflows/release.yml) y [`mirror.yml`](../../.github/workflows/mirror.yml). Pasa a ✅ con la primera publicación real.

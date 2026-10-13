@@ -60,15 +60,28 @@ Versiones fijadas ([ADR-032](../docs/decisiones/05_versionado_y_distribucion.md#
 <a id="configuracion"></a>
 ## 3. Configuración inicial (una sola vez)
 
-Los workflows `mirror.yml` y `release.yml` escriben en `sistemasSYZ/PyMPMS-11.1` con un token guardado como secreto del repositorio personal.
+Los workflows `mirror.yml` y `release.yml` corren en el repositorio personal y escriben en `sistemasSYZ/PyMPMS-11.1` con un token guardado como secreto **del repositorio personal**. En el repositorio de SYZ no se configura nada.
 
-1. **Crear el token** en GitHub › Settings › Developer settings › Personal access tokens:
-   - **De grano fino (recomendado):** *Resource owner* `sistemasSYZ`, *Repository access* solo `PyMPMS-11.1`, permiso **Contents: Read and write**. Si la organización exige aprobación de tokens, un administrador debe aprobarlo.
-   - **Clásico (si la organización no admite tokens de grano fino):** alcance `repo`.
-   - Fecha de expiración: la que permita la política de SYZ; anótela para renovarlo.
-2. **Guardarlo como secreto** en `DeividO12/PyMPMS-11.1` › Settings › Secrets and variables › Actions › *New repository secret*:
-   - Nombre: `SYZ_RELEASE_TOKEN`
-   - Valor: el token
+```text
+DeividO12/PyMPMS-11.1 (Actions + secreto SYZ_RELEASE_TOKEN) ──escribe──► sistemasSYZ/PyMPMS-11.1
+```
+
+| Paso | Dónde | Enlace |
+|---|---|---|
+| Crear el token | Configuración de la **cuenta** `DeividO12` (no de un repositorio) | https://github.com/settings/tokens/new |
+| Guardar el secreto | Repositorio **personal** `DeividO12/PyMPMS-11.1` | https://github.com/DeividO12/PyMPMS-11.1/settings/secrets/actions/new |
+
+1. **Crear un token clásico** (*Tokens (classic)* › *Generate new token (classic)*):
+   - *Note:* `PyMPMS-11.1 release → sistemasSYZ`.
+   - *Scopes:* **`repo`** y **`workflow`**, nada más. `workflow` es obligatorio porque el espejo empuja commits que modifican `.github/workflows/`, y GitHub rechaza esos push sin ese alcance.
+   - *Expiration:* la que permita la política de SYZ. **Anote la fecha**: al vencer, el espejo y las liberaciones fallan por autenticación hasta renovarlo (crear uno nuevo y reemplazar el secreto).
+   - Si junto al token aparece **Configure SSO**, autorícelo para `sistemasSYZ`.
+2. **Guardarlo como secreto** del repositorio personal con el nombre exacto `SYZ_RELEASE_TOKEN`.
+
+> [!NOTE]
+> **Por qué un token clásico y no uno de grano fino.** Verificado el 2026-10-13: la cuenta `DeividO12` es **colaborador externo** de `sistemasSYZ/PyMPMS-11.1` (permiso de escritura, no miembro de la organización), y GitHub no permite que un colaborador externo use un token de grano fino sobre repositorios privados de una organización. El token clásico con `repo` da acceso a todos los repositorios de la cuenta, por eso solo se guarda como secreto cifrado y con expiración. Si un administrador de `sistemasSYZ` hace a la cuenta miembro de la organización, conviene cambiarlo por uno de grano fino limitado a `PyMPMS-11.1` con *Contents: Read and write* y *Workflows: Read and write* (solo hay que reemplazar el secreto).
+
+Configurado el 2026-10-13 (token clásico, secreto `SYZ_RELEASE_TOKEN` en `DeividO12/PyMPMS-11.1`).
 3. **Probar el build sin publicar:** Actions › *release* › *Run workflow* (ejecución manual). Compila y prueba los 10 wheels y no publica nada.
 4. **Retirar el push doble local** cuando `mirror.yml` funcione: deja de ser necesario ([ADR-005](../docs/decisiones/01_proceso_y_repositorio.md#adr-005)).
 
