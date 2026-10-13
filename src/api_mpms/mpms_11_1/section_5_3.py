@@ -20,7 +20,6 @@ def its90_to_ipts68(
     *,
     t_f_90: Optional[float] = None,
     t_c_90: Optional[float] = None,
-    out_fahrenheit: Optional[bool] = True,
 ) -> float:
     """
     API MPMS 11.1.5.3
@@ -30,29 +29,31 @@ def its90_to_ipts68(
     Parameters
     ----------
     t_f_90 : float, optional
-        Temperature in °F (ITS-90 basis)
+        Temperature in °F (ITS-90 basis). Mutually exclusive with ``t_c_90``.
     t_c_90 : float, optional
-        Temperature in °C (ITS-90 basis)
-    out_fahrenheit : bool, default True
-        Return value in °F if True, otherwise °C
-
+        Temperature in °C (ITS-90 basis). Mutually exclusive with ``t_f_90``.
     Returns
     -------
     float
-        Temperature converted to IPTS-68
+        Temperature converted to IPTS-68, in the same unit as the input
+        (°F if ``t_f_90`` was given, °C if ``t_c_90`` was given).
     """
 
-    if t_f_90 is None and t_c_90 is None:
+    if (t_f_90 is None) == (t_c_90 is None):
         raise MPMSValidationError(
-            "Either t_f_90 or t_c_90 must be provided"
+            "Exactly one of t_f_90 or t_c_90 must be provided"
         )
 
     # Convert input to Celsius if needed
-    if t_c_90 is None:
-        t_c_90 = (t_f_90 - 32.0) / 1.8
+    input_fahrenheit = t_f_90 is not None
+    if t_f_90 is not None:
+        t_c = (t_f_90 - 32.0) / 1.8
+    else:
+        assert t_c_90 is not None
+        t_c = t_c_90
 
     # Step 1 – scaled temperature
-    tau = t_c_90 / 630.0
+    tau = t_c / 630.0
 
     # Step 2 – polynomial evaluation (Horner method)
     delta_t = _A_COEFFICIENTS[-1]
@@ -62,9 +63,9 @@ def its90_to_ipts68(
     delta_t *= tau
 
     # Step 3 – corrected temperature
-    t_c_68 = t_c_90 - delta_t
+    t_c_68 = t_c - delta_t
 
-    if out_fahrenheit:
+    if input_fahrenheit:
         return 1.8 * t_c_68 + 32.0
 
     return t_c_68

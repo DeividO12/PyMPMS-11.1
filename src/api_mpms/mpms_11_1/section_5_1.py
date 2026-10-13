@@ -1,42 +1,81 @@
-# Informacion tomada de la norma API MPMS 11.1
-# 11.1.5.1  Method to Convert Units of Temperature, Pressure, Thermal Expansion Factor, and Density-Related Values
+# api_mpms/mpms_11_1/section_5_1.py
 
 """
-Esquema de Cálculos
+API MPMS 11.1.5.1 – Conversión de unidades de temperatura, presión, factor de
+expansión térmica y densidad.
 
-Este procedimiento acepta los valores de densidad, temperatura y presión en las unidades en que se ingresan y los convierte a
-las unidades requeridas por el procedimiento de cálculo.
+Los valores de densidad relativa y gravedad API están en vacío.
 
-Los valores de densidad relativa y gravedad AF'I están en vacuo.
+    t_C      Temperatura (°C)
+    API      Gravedad API (°API)
+    rho      Densidad (kg/m³)
+    gamma_t  Densidad relativa respecto al agua a 60 °F
+    P        Presión manométrica (psig, kPa o bar)
+    Fp       Factor de compresibilidad escalado (psi⁻¹, kPa⁻¹ o bar⁻¹)
 
-Valores posibles de entrada y salida
-
-t_C = (t°C)                     Valor de temperatura (°C)
-P_kpa = (Pₖₚₐ)                  Valor de presión (kpa (manómetro))
-G = (API)                       API gravity (°API)
-rho = (ρ)                       Valor de densidad (kg/m3)
-gamma_t = (γₜ)                  Valor de densidad relativa basado en el agua a la temperatura T
+Las constantes de conversión se usan con todos sus dígitos (11.1.3).
 """
-def rho_to_API(rho:float):
-    API = (141.5 / (rho/999.016))-131.5
-    return API
-    
-def API_to_rho(API:float):
-    rho = (141.5*999.016)/(API + 131.5)
-    return rho
 
-def gamma_t_to_rho(gamma_t:float):
-    rho = gamma_t *  999.016
-    return rho
+from api_mpms.constants.physical import KPA_PER_PSI, BAR_PER_PSI, WATER_DENSITY_KGM3
+from api_mpms.exceptions.validation import MPMSValidationError
 
-def rho_to_gamma_t(rho: float):
-    gamma_t = rho/999.016
-    return gamma_t
 
-def celc_to_fahr(celc: float):
-    fahr = (1.8 * celc) + 32
-    return fahr
+def rho_to_api(rho: float) -> float:
+    if rho <= 0:
+        raise MPMSValidationError(f"Density must be > 0 kg/m3, got {rho}")
+    return (141.5 / (rho / WATER_DENSITY_KGM3)) - 131.5
 
-def alphac_to_alphaf(alpha_c):
-    alpha_f = alpha_c/1.8
-    return alpha_f
+
+def api_to_rho(api: float) -> float:
+    if api <= -131.5:
+        raise MPMSValidationError(f"API gravity must be > -131.5, got {api}")
+    return (141.5 * WATER_DENSITY_KGM3) / (api + 131.5)
+
+
+def gamma_t_to_rho(gamma_t: float) -> float:
+    if gamma_t <= 0:
+        raise MPMSValidationError(f"Relative density must be > 0, got {gamma_t}")
+    return gamma_t * WATER_DENSITY_KGM3
+
+
+def rho_to_gamma_t(rho: float) -> float:
+    if rho <= 0:
+        raise MPMSValidationError(f"Density must be > 0 kg/m3, got {rho}")
+    return rho / WATER_DENSITY_KGM3
+
+
+def celsius_to_fahrenheit(t_c: float) -> float:
+    return (1.8 * t_c) + 32
+
+
+def alpha_c_to_alpha_f(alpha_c: float) -> float:
+    """Coeficiente de expansión térmica de °C⁻¹ a °F⁻¹."""
+    return alpha_c / 1.8
+
+
+def alpha_f_to_alpha_c(alpha_f: float) -> float:
+    """Coeficiente de expansión térmica de °F⁻¹ a °C⁻¹."""
+    return 1.8 * alpha_f
+
+
+_KPA = "kpa"
+_BAR = "bar"
+
+
+def _pressure_factor(unit: str) -> float:
+    unit_key = unit.strip().lower() if isinstance(unit, str) else unit
+    if unit_key == _KPA:
+        return KPA_PER_PSI
+    if unit_key == _BAR:
+        return BAR_PER_PSI
+    raise MPMSValidationError(f"pressure_unit must be 'kPa' or 'bar', got {unit!r}")
+
+
+def pressure_to_psig(p: float, unit: str) -> float:
+    """Presión manométrica en kPa o bar → psig (P_psi = P_kPa / 6.894757 = P_bar / 0.06894757)."""
+    return p / _pressure_factor(unit)
+
+
+def fp_from_psi(fp_psi: float, unit: str) -> float:
+    """Fp en psi⁻¹ → kPa⁻¹ o bar⁻¹ (Fp_kPa = Fp_psi / 6.894757; Fp_bar = Fp_psi / 0.06894757)."""
+    return fp_psi / _pressure_factor(unit)
