@@ -26,6 +26,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # Sin esto, checkout deja en git una cabecera con el GITHUB_TOKEN de este
+          # repositorio que se envía a todo github.com y anula el token de SYZ.
+          persist-credentials: false
       - name: Replicar en sistemasSYZ/PyMPMS-11.1
         env:
           TOKEN: ${{ secrets.SYZ_RELEASE_TOKEN }}
