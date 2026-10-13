@@ -33,32 +33,46 @@ La librería reproduce los ejemplos resueltos de la norma (11.1.5 a 11.1.7) y lo
 
 | Requisito | Detalle |
 |---|---|
-| Python | 3.9 o superior (probado en 3.9, 3.12 y 3.13) |
-| Dependencias | Ninguna. `numpy` y `pandas` solo para el generador de tablas (extra `tables`) |
+| Python | 3.9 a 3.13 |
+| Plataforma | Windows x64 o Linux x64 (wheels compilados) |
+| Dependencias | Ninguna |
 
-La librería es de uso interno y no está publicada en PyPI. Se instala desde el repositorio de **SYZ** indicando la versión (tag):
+La librería es de uso interno y no está publicada en PyPI.
+
+Las versiones se publican **compiladas** (wheels, sin código fuente) en el repositorio de SYZ, en dos lugares con los mismos archivos: los [Releases](https://github.com/sistemasSYZ/PyMPMS-11.1/releases) y la rama [`dist`](https://github.com/sistemasSYZ/PyMPMS-11.1/tree/dist) (una carpeta por versión). Se instala el wheel que corresponde a la versión de Python y a la plataforma del equipo:
+
+| Plataforma | Python | Archivo |
+|---|---|---|
+| Windows x64 | 3.9 – 3.13 | `pympms_11_1-<versión>-cpXY-cpXY-win_amd64.whl` |
+| Linux x64 (glibc ≥ 2.17) | 3.9 – 3.13 | `pympms_11_1-<versión>-cpXY-cpXY-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl` |
+
+`cpXY` es la versión de Python (`cp39` … `cp313`). Para averiguarla en el equipo de destino:
 
 ```bash
-pip install "pympms-11-1 @ git+https://github.com/sistemasSYZ/PyMPMS-11.1.git@v1.0.0"
-pip install "pympms-11-1[tables] @ git+https://github.com/sistemasSYZ/PyMPMS-11.1.git@v1.0.0"   # + generador de tablas
+python -c "import sys, sysconfig; print(f'cp{sys.version_info[0]}{sys.version_info[1]}', sysconfig.get_platform())"
 ```
 
-En un `requirements.txt`:
+**Opción A — un solo comando**, desde la rama `dist` (ejemplo: v1.1.0, Python 3.12, Windows):
+
+```bash
+pip install "https://${GH_TOKEN}@raw.githubusercontent.com/sistemasSYZ/PyMPMS-11.1/dist/v1.1.0/pympms_11_1-1.1.0-cp312-cp312-win_amd64.whl"
+```
+
+**Opción B — con [`gh`](https://cli.github.com/)**, desde el Release:
+
+```bash
+gh release download v1.1.0 --repo sistemasSYZ/PyMPMS-11.1 --pattern "*cp312*win_amd64.whl"
+pip install ./pympms_11_1-1.1.0-cp312-cp312-win_amd64.whl
+```
+
+En un `requirements.txt` (pip expande `${GH_TOKEN}` desde el entorno):
 
 ```text
-pympms-11-1 @ git+https://github.com/sistemasSYZ/PyMPMS-11.1.git@v1.0.0
+pympms-11-1 @ https://${GH_TOKEN}@raw.githubusercontent.com/sistemasSYZ/PyMPMS-11.1/dist/v1.1.0/pympms_11_1-1.1.0-cp312-cp312-win_amd64.whl
 ```
 
 > [!NOTE]
-> El repositorio es privado: el equipo que instala necesita acceso de lectura a `sistemasSYZ/PyMPMS-11.1` (credenciales de git o token) y tener `git` instalado. Fije siempre un tag (`@v1.0.0`); sin él se instala la última versión de la rama por defecto.
-
-Desde una copia local del repositorio:
-
-```bash
-pip install .                 # librería
-pip install ".[tables]"       # + generador de tablas CSV
-pip install -e ".[dev]"       # desarrollo: pytest, pytest-cov, ruff, mypy
-```
+> El repositorio es privado: `GH_TOKEN` debe ser un token con **lectura** sobre `sistemasSYZ/PyMPMS-11.1`. Fije siempre la versión en la URL. La instalación desde el código fuente es solo para desarrollo ([README › Desarrollo](https://github.com/sistemasSYZ/PyMPMS-11.1#desarrollo)).
 
 La distribución se llama `pympms-11-1`; el paquete se importa como `api_mpms`.
 
@@ -147,6 +161,17 @@ La versión se deriva del tag de git (setuptools-scm). Para publicar una versió
 git tag -a v1.1.0 -m "v1.1.0 — resumen"
 git push origin master v1.1.0      # llega a ambos repositorios
 ```
+
+### Instalar desde el código fuente (solo desarrollo)
+
+```bash
+pip install -e ".[dev]"            # desde una copia del repositorio: pytest, pytest-cov, ruff, mypy
+pip install -e ".[dev,tables]"     # + generador de tablas (numpy, pandas)
+pip install "pympms-11-1 @ git+https://github.com/sistemasSYZ/PyMPMS-11.1.git@v1.1.0"   # código fuente de un tag
+```
+
+> [!WARNING]
+> Estas formas instalan el **código fuente**. En los equipos de destino se instalan los wheels compilados ([Requisitos e instalación](#instalacion)), según [ADR-033](docs/decisiones/05_versionado_y_distribucion.md#adr-033).
 
 ### Versiones compiladas
 

@@ -7,8 +7,9 @@ Guía para **integrar** la librería en una aplicación: qué funciones existen,
 | **Versión** | 1.0.0 (la versión instalada se obtiene del tag de git: `api_mpms.__version__`) |
 | **Norma** | API MPMS Capítulo 11.1 (2004) — *Temperature and Pressure Volume Correction Factors for Generalized Crude Oils, Refined Products, and Lubricating Oils* |
 | **Paquete** | distribución `pympms-11-1` · import `api_mpms` |
-| **Python** | 3.9 o superior (probado en 3.9, 3.12 y 3.13) |
-| **Dependencias** | Ninguna para la librería. `numpy` y `pandas` solo para el [generador de tablas](10_generador_tablas.md). |
+| **Python** | 3.9 a 3.13 |
+| **Plataforma** | Windows x64 o Linux x64 (wheels compilados) |
+| **Dependencias** | Ninguna |
 
 ---
 
@@ -28,35 +29,53 @@ Guía para **integrar** la librería en una aplicación: qué funciones existen,
 
 | Requisito | Detalle |
 |---|---|
-| Python | ≥ 3.9 |
-| Sistema operativo | Cualquiera (Windows, Linux, macOS) |
+| Python | 3.9 a 3.13 |
+| Sistema operativo | Windows x64 o Linux x64 (glibc ≥ 2.17) |
 | Dependencias de ejecución | Ninguna (solo biblioteca estándar) |
-| Extra `tables` | `numpy ≥ 1.24`, `pandas ≥ 2.0` — solo para `scripts/generate_tables.py` |
 
-La librería es de uso interno y no está publicada en PyPI. Se instala desde el repositorio de **SYZ** indicando la versión (tag):
+La librería es de uso interno y no está publicada en PyPI.
+
+Las versiones se publican **compiladas** (wheels, sin código fuente) en el repositorio de SYZ, en dos lugares con los mismos archivos: los [Releases](https://github.com/sistemasSYZ/PyMPMS-11.1/releases) y la rama [`dist`](https://github.com/sistemasSYZ/PyMPMS-11.1/tree/dist) (una carpeta por versión). Se instala el wheel que corresponde a la versión de Python y a la plataforma del equipo:
+
+| Plataforma | Python | Archivo |
+|---|---|---|
+| Windows x64 | 3.9 – 3.13 | `pympms_11_1-<versión>-cpXY-cpXY-win_amd64.whl` |
+| Linux x64 (glibc ≥ 2.17) | 3.9 – 3.13 | `pympms_11_1-<versión>-cpXY-cpXY-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl` |
+
+`cpXY` es la versión de Python (`cp39` … `cp313`). Para averiguarla en el equipo de destino:
 
 ```bash
-pip install "pympms-11-1 @ git+https://github.com/sistemasSYZ/PyMPMS-11.1.git@v1.0.0"
-pip install "pympms-11-1[tables] @ git+https://github.com/sistemasSYZ/PyMPMS-11.1.git@v1.0.0"   # + generador de tablas
+python -c "import sys, sysconfig; print(f'cp{sys.version_info[0]}{sys.version_info[1]}', sysconfig.get_platform())"
 ```
 
-En un `requirements.txt`:
+**Opción A — un solo comando**, desde la rama `dist` (ejemplo: v1.1.0, Python 3.12, Windows):
+
+```bash
+pip install "https://${GH_TOKEN}@raw.githubusercontent.com/sistemasSYZ/PyMPMS-11.1/dist/v1.1.0/pympms_11_1-1.1.0-cp312-cp312-win_amd64.whl"
+```
+
+**Opción B — con [`gh`](https://cli.github.com/)**, desde el Release:
+
+```bash
+gh release download v1.1.0 --repo sistemasSYZ/PyMPMS-11.1 --pattern "*cp312*win_amd64.whl"
+pip install ./pympms_11_1-1.1.0-cp312-cp312-win_amd64.whl
+```
+
+En un `requirements.txt` (pip expande `${GH_TOKEN}` desde el entorno):
 
 ```text
-pympms-11-1 @ git+https://github.com/sistemasSYZ/PyMPMS-11.1.git@v1.0.0
+pympms-11-1 @ https://${GH_TOKEN}@raw.githubusercontent.com/sistemasSYZ/PyMPMS-11.1/dist/v1.1.0/pympms_11_1-1.1.0-cp312-cp312-win_amd64.whl
 ```
 
 > [!NOTE]
-> El repositorio es privado: el equipo que instala necesita acceso de lectura a `sistemasSYZ/PyMPMS-11.1` (credenciales de git o token) y tener `git` instalado. Fije siempre un tag (`@v1.0.0`); sin él se instala la última versión de la rama por defecto.
-
-Desde una copia local del repositorio: `pip install .` (o `pip install ".[tables]"`).
+> El repositorio es privado: `GH_TOKEN` debe ser un token con **lectura** sobre `sistemasSYZ/PyMPMS-11.1`. Fije siempre la versión en la URL. La instalación desde el código fuente es solo para desarrollo ([README › Desarrollo](https://github.com/sistemasSYZ/PyMPMS-11.1#desarrollo)).
 
 Comprobación:
 
 ```python
 >>> import api_mpms
 >>> api_mpms.__version__          # doctest: +SKIP
-'1.0.0'
+'1.1.0'
 
 ```
 

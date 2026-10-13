@@ -112,6 +112,14 @@ Al terminar `release.yml` (unos 20-30 minutos), la versión está en:
 
 Las notas del Release salen de la sección `## X.Y.Z` del [CHANGELOG](../CHANGELOG.md).
 
+Después de liberar, traiga `master` a la rama de trabajo para que contenga el commit etiquetado. Si no, `setuptools-scm` no ve el tag desde `dev_deivid` y las versiones de desarrollo salen como `0.1.devN` en lugar de `X.Y.(Z+1).devN`:
+
+```bash
+git checkout dev_deivid
+git merge master            # avance rápido o merge sin conflictos: master solo agrega el commit de merge
+git push origin dev_deivid
+```
+
 ---
 
 <a id="instalar"></a>
@@ -152,6 +160,8 @@ python packaging/build_wheels.py --skip-tests
 - La versión sale de `setuptools-scm`. Entre tags es de desarrollo (`1.0.1.devN+g…`); se puede forzar con `PYMPMS_VERSION=X.Y.Z`.
 
 Resultado de referencia (2026-10-13, Windows, Python 3.12): wheel de 447 KB, los 19 módulos compilados, **508 pruebas pasan** contra el wheel instalado y 1 se omite (el generador de tablas, porque el wheel no lleva pandas).
+
+Build de prueba en CI (2026-10-13, ejecución `38451574663`): los **10 wheels** (Python 3.9–3.13 × Windows/Linux) pasaron cada uno las 508 pruebas cargando los módulos desde binarios. Tamaños: Windows 406–440 KB, Linux 474–489 KB (sin símbolos), ~4.5 MB por versión. Duración: ~4.5 min.
 
 ---
 
