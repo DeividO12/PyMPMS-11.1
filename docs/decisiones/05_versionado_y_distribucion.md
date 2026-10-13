@@ -12,7 +12,10 @@
 | [ADR-028](#adr-028) | Configuración de build en `packaging/` del repositorio principal | 🟡 |
 | [ADR-029](#adr-029) | Distribuir por GitHub Releases y una rama `dist`, sin índice de paquetes | 🟡 |
 | [ADR-030](#adr-030) | Liberación automatizada desde el repositorio personal con GitHub Actions | 🟡 |
-| [Flujo resultante](#flujo) | Cómo encajan ADR-025 a ADR-030 | — |
+| [ADR-031](#adr-031) | La rama `dist` guarda una carpeta por versión | 🟡 |
+| [ADR-032](#adr-032) | Se mantienen los wheels para Python 3.9 | 🟡 |
+| [ADR-033](#adr-033) | La documentación del integrador muestra solo la instalación de wheels | 🟡 |
+| [Flujo resultante](#flujo) | Cómo encajan ADR-025 a ADR-033 | — |
 
 ---
 
@@ -154,8 +157,8 @@ No se publica el paquete con el código fuente (sdist).
 
 **Consecuencias.**
 - Quien instala necesita un token con lectura sobre el repositorio de SYZ, y el nombre exacto del wheel de su plataforma y versión de Python.
-- Si la rama guarda solo la última versión o todas está pendiente: [PEND-1](06_pendientes.md#pend-1).
-- El papel de la instalación desde el código: [PEND-3](06_pendientes.md#pend-3).
+- La rama guarda una carpeta por versión: [ADR-031](#adr-031).
+- La documentación del integrador solo muestra la instalación de wheels: [ADR-033](#adr-033).
 
 ---
 
@@ -187,6 +190,56 @@ El workflow solo se ejecuta en el repositorio personal (condición sobre `github
 
 ---
 
+<a id="adr-031"></a>
+## ADR-031 · La rama `dist` guarda una carpeta por versión
+
+| Estado | Fecha | Decidido por | Evidencia |
+|---|---|---|---|
+| 🟡 Aceptada, pendiente de implementar | 2026-10-13 | 👤 Usuario (antes [PEND-1](06_pendientes.md#pend-1)) | — |
+
+**Contexto.** `pymlii` rehace su rama `dist/latest` en cada versión, así que solo la última se instala con un único comando.
+
+**Decisión.** La rama `dist` de `sistemasSYZ/PyMPMS-11.1` acumula una carpeta por versión (`vX.Y.Z/`) con sus wheels. Cualquier versión se instala con un solo `pip install <URL>`.
+
+**Alternativas consideradas.**
+| Alternativa | Por qué no |
+|---|---|
+| Solo la última versión (como `pymlii`) | Para fijar una versión anterior en un despliegue hacen falta dos pasos |
+
+**Consecuencias.** La rama crece con cada versión. Los wheels de esta librería son pequeños; el tamaño real se mide en la primera publicación.
+
+---
+
+<a id="adr-032"></a>
+## ADR-032 · Se mantienen los wheels para Python 3.9
+
+| Estado | Fecha | Decidido por | Evidencia |
+|---|---|---|---|
+| 🟡 Aceptada, pendiente de implementar | 2026-10-13 | 👤 Usuario (antes [PEND-2](06_pendientes.md#pend-2)) | Verificado el 2026-10-13: cibuildwheel 4.3.1 lista `cp39-win_amd64` y `cp39-manylinux_x86_64`; Cython 3.3.0 publica wheel `cp39` |
+
+**Contexto.** Python 3.9 ya no recibe soporte oficial; podía ocurrir que las herramientas de compilación lo hubieran retirado.
+
+**Decisión.** Se compilan wheels para Python 3.9 a 3.13 (10 por versión) mientras haya equipos de SYZ que usen 3.9 y las herramientas lo permitan. Las versiones de cibuildwheel y Cython se **fijan** en la configuración de build, para que una actualización no retire 3.9 sin aviso y para que un binario se pueda reconstruir.
+
+**Consecuencias.** Cuando las herramientas fijadas dejen de soportar 3.9, se registra una decisión nueva que la retire.
+
+---
+
+<a id="adr-033"></a>
+## ADR-033 · La documentación del integrador muestra solo la instalación de wheels
+
+| Estado | Fecha | Decidido por | Evidencia |
+|---|---|---|---|
+| 🟡 Aceptada, pendiente de implementar | 2026-10-13 | 👤 Usuario (antes [PEND-3](06_pendientes.md#pend-3)) | — |
+
+**Contexto.** Hoy el README y la documentación API indican `pip install "pympms-11-1 @ git+https://…"`, que instala el código fuente: contradice el objetivo de la distribución ofuscada en los equipos de destino.
+
+**Decisión.** El README y la documentación API muestran solo la instalación de wheels (desde el Release o la rama `dist`). La instalación desde git o desde una copia local queda en la sección de desarrollo.
+
+**Consecuencias.** La documentación se actualiza cuando exista la primera versión con wheels publicados.
+
+---
+
 <a id="flujo"></a>
 ## Flujo resultante
 
@@ -201,7 +254,7 @@ master ── git tag -a vX.Y.Z ── git push ──────────�
    2. cibuildwheel: Windows y Linux × Python 3.9–3.13              ADR-026
       (Cython, annotation_typing=False, sin .pyi, pruebas por wheel)  ADR-027
    3. espejo de ramas y tags ──────────► sistemasSYZ/PyMPMS-11.1    ADR-005
-   4. Release vX.Y.Z + rama dist ──────► sistemasSYZ/PyMPMS-11.1    ADR-029
+   4. Release vX.Y.Z + rama dist/vX.Y.Z ► sistemasSYZ/PyMPMS-11.1   ADR-029, ADR-031
         │
         ▼
 SYZ instala el wheel de su plataforma (gh release download / pip install <URL>)

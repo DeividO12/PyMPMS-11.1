@@ -16,7 +16,7 @@ Decisiones de arquitectura, normativas, de API, de calidad y de distribución to
 | [03 · API pública](03_api_publica.md) | Contrato con el integrador |
 | [04 · Calidad y documentación](04_calidad_y_documentacion.md) | Pruebas, CI, idioma y documentación |
 | [05 · Versionado y distribución](05_versionado_y_distribucion.md) | Versiones, ofuscación, wheels y liberación |
-| [06 · Pendientes](06_pendientes.md) | Decisiones abiertas, con opciones y recomendación |
+| [06 · Pendientes](06_pendientes.md) | Decisiones abiertas e historial de las resueltas |
 
 ---
 
@@ -95,24 +95,23 @@ Cada decisión (ADR, *Architecture Decision Record*) tiene:
 | [ADR-028](05_versionado_y_distribucion.md#adr-028) | Configuración de build en `packaging/` del repositorio principal | 🟡 | 2026-10-13 | 👤 |
 | [ADR-029](05_versionado_y_distribucion.md#adr-029) | Distribuir por GitHub Releases y una rama `dist`, sin índice de paquetes | 🟡 | 2026-10-13 | 👤 |
 | [ADR-030](05_versionado_y_distribucion.md#adr-030) | Liberación automatizada desde el repositorio personal con GitHub Actions | 🟡 | 2026-10-13 | 👤 |
+| [ADR-031](05_versionado_y_distribucion.md#adr-031) | La rama `dist` guarda una carpeta por versión | 🟡 | 2026-10-13 | 👤 |
+| [ADR-032](05_versionado_y_distribucion.md#adr-032) | Se mantienen los wheels para Python 3.9 | 🟡 | 2026-10-13 | 👤 |
+| [ADR-033](05_versionado_y_distribucion.md#adr-033) | La documentación del integrador muestra solo la instalación de wheels | 🟡 | 2026-10-13 | 👤 |
 
 ---
 
 <a id="pendientes"></a>
 ## 3. Decisiones pendientes
 
-| ID | Pregunta | Recomendación | Bloquea |
-|---|---|---|---|
-| [PEND-1](06_pendientes.md#pend-1) | ¿La rama `dist` guarda solo la última versión o todas? | Una carpeta por versión | [ADR-029](05_versionado_y_distribucion.md#adr-029) |
-| [PEND-2](06_pendientes.md#pend-2) | ¿Se siguen compilando wheels para Python 3.9? | Mantenerlo si la herramienta lo permite | [ADR-026](05_versionado_y_distribucion.md#adr-026) |
-| [PEND-3](06_pendientes.md#pend-3) | ¿Se sigue documentando la instalación desde el código fuente? | Solo para desarrollo | [ADR-029](05_versionado_y_distribucion.md#adr-029) |
+No hay decisiones pendientes. Las tres que había se resolvieron el 2026-10-13 ([historial](06_pendientes.md#historial)).
 
 ---
 
 <a id="nueva"></a>
 ## 4. Cómo registrar una decisión nueva
 
-1. Usar el siguiente número libre (`ADR-031`, …) en el documento del área que corresponda.
+1. Usar el siguiente número libre (`ADR-034`, …) en el documento del área que corresponda.
 2. Copiar la plantilla y agregar la fila al [índice](#indice).
 3. Si reemplaza otra decisión, marcar la anterior como ❌ y enlazarlas en ambos sentidos.
 
