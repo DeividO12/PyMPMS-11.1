@@ -9,7 +9,7 @@
 | **Fuera de alcance** | Conformidad matemática/normativa con API MPMS 11.1 (se revisará en otra fase) |
 | **Líneas auditadas** | ~1 830 (22 archivos `.py` + `pyproject.toml`, `README.md`, `.gitignore`) |
 | **Entorno de verificación** | Python 3.12.10 · Windows 11 |
-| **Corrección** | 2026-10-09 · commits `6b68257` … `a9f9076` en `dev_deivid` · versión `0.2.0` |
+| **Corrección** | 2026-10-09 · commits `6b68257` … `a9f9076` en `dev_deivid` · versión `1.0.0` (tag `v1.0.0`) |
 | **Estado de cierre** | **36 de 38 hallazgos cerrados al 100 %**, 2 parciales · cierre promedio **98.7 %** ([detalle](#estado-de-cierre)) |
 | **Conformidad normativa** | Verificada en paralelo contra API MPMS 11.1 (2004) → [10 · Conformidad con la norma](10_conformidad_norma.md) |
 
@@ -82,7 +82,7 @@ La librería tiene una **arquitectura modular razonable** (constantes, validador
 | [Calidad y mantenibilidad](07_calidad_mantenibilidad.md) | 4 (+2) | 3 (+2) | 1 ([C-03](07_calidad_mantenibilidad.md#c-03) 80 %) | 🟡 95 % |
 | **Total** | **38** | **36** | **2** | **98.7 %** |
 
-| Indicador | Antes (`4f1216d`) | Después (`0.2.0`) |
+| Indicador | Antes (`4f1216d`) | Después (`1.0.0`) |
 |---|---|---|
 | Pruebas automatizadas | 0 | **493** (105 ejemplos resueltos y 253 valores de tablas de la norma) |
 | Cobertura | — | **99 %** |

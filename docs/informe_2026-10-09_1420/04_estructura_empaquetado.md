@@ -145,7 +145,7 @@ version = { attr = "api_mpms.__version__" }
 |:---:|---|---|
 | **100 %** | `6b68257`, `7809937` | `pip install -e ".[dev,tables]"` en un `.venv` limpio. |
 
-Extras `[tables]` (numpy, pandas) y `[dev]` (pytest, pytest-cov, ruff, mypy); versión dinámica desde `api_mpms.__version__` (0.2.0).
+Extras `[tables]` (numpy, pandas) y `[dev]` (pytest, pytest-cov, ruff, mypy); versión dinámica: primero desde `api_mpms.__version__` y, desde la v1.0.0, derivada del tag de git con setuptools-scm.
 
 ---
 

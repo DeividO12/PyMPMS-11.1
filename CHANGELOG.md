@@ -1,12 +1,14 @@
 # Changelog
 
-## 0.2.0 — 2026-10-09
+La versión del paquete se deriva del tag de git (`vX.Y.Z`) mediante setuptools-scm.
+
+## 1.0.0 — 2026-10-13
 
 Correcciones de la auditoría de código del 2026-10-09 ([informe](docs/informe_2026-10-09_1420/README.md)) y verificación contra API MPMS 11.1 (2004).
 
 ### ⚠️ Cambios incompatibles
 
-| Antes (0.1.0) | Ahora (0.2.0) |
+| Antes (0.1.0) | Ahora (1.0.0) |
 |---|---|
 | `correct_base_to_alternate(rho_60, t_f, p_psig, commodity_group=...)` | Todos los parámetros por nombre; `commodity_type=` |
 | Resultados como tuplas de 5 o 6 valores | `NamedTuple` con `ctpl_rounded` (y `iterations` en 6.2) |

@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=64", "setuptools-scm>=8"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -23,13 +23,14 @@ classifiers = [
 
 [project.optional-dependencies]
 tables = ["numpy>=1.24", "pandas>=2.0"]
-dev = ["pytest>=8", "pytest-cov>=5", "ruff>=0.5", "mypy>=1.10"]
+dev = ["pytest>=8", "pytest-cov>=5", "ruff>=0.5", "mypy>=1.10", "setuptools-scm>=8"]
 
 [tool.setuptools]
 package-dir = {"" = "src"}
 
-[tool.setuptools.dynamic]
-version = { attr = "api_mpms.__version__" }
+[tool.setuptools_scm]
+# La versión se deriva del tag de git (vX.Y.Z); no se edita a mano.
+version_file = "src/api_mpms/_version.py"
 
 [tool.setuptools.packages.find]
 where = ["src"]

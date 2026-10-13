@@ -4,7 +4,7 @@ Guía para **integrar** la librería en una aplicación: qué funciones existen,
 
 | | |
 |---|---|
-| **Versión** | 0.2.0 |
+| **Versión** | 1.0.0 (la versión instalada se obtiene del tag de git: `api_mpms.__version__`) |
 | **Norma** | API MPMS Capítulo 11.1 (2004) — *Temperature and Pressure Volume Correction Factors for Generalized Crude Oils, Refined Products, and Lubricating Oils* |
 | **Paquete** | distribución `pympms-11-1` · import `api_mpms` |
 | **Python** | 3.9 o superior (probado en 3.9, 3.12 y 3.13) |
@@ -44,8 +44,8 @@ Comprobación:
 
 ```python
 >>> import api_mpms
->>> api_mpms.__version__
-'0.2.0'
+>>> api_mpms.__version__          # doctest: +SKIP
+'1.0.0'
 
 ```
 

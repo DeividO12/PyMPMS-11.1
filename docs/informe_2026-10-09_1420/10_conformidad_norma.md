@@ -18,7 +18,7 @@ La auditoría de integridad se corrigió verificando **en paralelo** cada cambio
 <a id="resultado-global"></a>
 ## 1. Resultado global
 
-| Aspecto | Antes (`4f1216d`) | Ahora (`0.2.0`) |
+| Aspecto | Antes (`4f1216d`) | Ahora (`1.0.0`) |
 |---|---|---|
 | Ecuaciones (ITS-90, ρ*, α60, CTL, Fp, CPL, Newton) | ✅ Conformes | ✅ Conformes, sin cambios numéricos |
 | Validación de límites (ρ60, ρo, α60, t, P) | ❌ Extrapolaba densidad y α | ✅ Error de rango, sin extrapolar |

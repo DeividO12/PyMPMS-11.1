@@ -3,7 +3,7 @@
 [⬅ Anterior: Calidad y mantenibilidad](07_calidad_mantenibilidad.md) · [Índice](README.md) · [Siguiente: Plan de acción ➡](09_plan_de_accion.md)
 
 > [!NOTE]
-> Estas evidencias corresponden al código auditado (`4f1216d`). Con la versión `0.2.0` los mismos casos lanzan `MPMSValidationError` / `MPMSRangeError` o dan el resultado correcto, como documenta la sección **Resolución** de cada hallazgo.
+> Estas evidencias corresponden al código auditado (`4f1216d`). Con la versión `1.0.0` los mismos casos lanzan `MPMSValidationError` / `MPMSRangeError` o dan el resultado correcto, como documenta la sección **Resolución** de cada hallazgo.
 
 Scripts usados para verificar los hallazgos y la salida obtenida. Todos se ejecutaron desde la raíz del repositorio con `python -I` y `src` añadido a `sys.path`, sin modificar el código de la librería.
 

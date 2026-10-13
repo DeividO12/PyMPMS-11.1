@@ -27,7 +27,10 @@ from api_mpms.results import (
     ObservedToBaseResult,
 )
 
-__version__ = "0.2.0"
+try:  # generado por setuptools-scm a partir del tag de git al instalar
+    from api_mpms._version import __version__
+except ImportError:  # pragma: no cover - código fuente sin instalar
+    __version__ = "0+unknown"
 
 __all__ = [
     "BaseToAlternateResult",
