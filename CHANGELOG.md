@@ -2,6 +2,21 @@
 
 La versión del paquete se deriva del tag de git (`vX.Y.Z`) mediante setuptools-scm.
 
+## 1.1.0 — 2026-10-13
+
+Primera versión distribuida **compilada**. La API y los resultados no cambian respecto a 1.0.0.
+
+### Añadido
+
+- Wheels compilados con Cython (código no legible) para Python 3.9–3.13 en Windows x64 y Linux x64, publicados en los [Releases](https://github.com/sistemasSYZ/PyMPMS-11.1/releases) y en la rama `dist` de `sistemasSYZ/PyMPMS-11.1`. Cada wheel pasa las 508 pruebas y doctests antes de publicarse.
+- Liberación automatizada al subir un tag (`release.yml`) y espejo automático del repositorio de trabajo en SYZ (`mirror.yml`). Proceso en [`packaging/README.md`](packaging/README.md).
+- [Registro de decisiones](docs/decisiones/README.md) del proyecto (ADR-001 a ADR-033).
+
+### Cambiado
+
+- La instalación documentada para los equipos de destino es la de los wheels compilados; la instalación desde el código fuente queda solo para desarrollo (ADR-033).
+- Metadatos de licencia en formato SPDX (`LicenseRef-Proprietary`).
+
 ## 1.0.0 — 2026-10-13
 
 Correcciones de la auditoría de código del 2026-10-09 ([informe](docs/informe_2026-10-09_1420/README.md)) y verificación contra API MPMS 11.1 (2004).
