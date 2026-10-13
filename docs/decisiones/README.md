@@ -90,14 +90,14 @@ Cada decisión (ADR, *Architecture Decision Record*) tiene:
 | ID | Decisión | Estado | Fecha | Decidido por |
 |---|---|:---:|---|:---:|
 | [ADR-025](05_versionado_y_distribucion.md#adr-025) | Versión derivada del tag de git (setuptools-scm); primera versión `v1.0.0` | ✅ | 2026-10-13 | 👤 |
-| [ADR-026](05_versionado_y_distribucion.md#adr-026) | Publicar versiones ofuscadas con Cython en wheels por plataforma | 🟡 | 2026-10-13 | 👤 |
-| [ADR-027](05_versionado_y_distribucion.md#adr-027) | Sin archivos de tipos `.pyi` en los wheels | 🟡 | 2026-10-13 | 👤 |
-| [ADR-028](05_versionado_y_distribucion.md#adr-028) | Configuración de build en `packaging/` del repositorio principal | 🟡 | 2026-10-13 | 👤 |
-| [ADR-029](05_versionado_y_distribucion.md#adr-029) | Distribuir por GitHub Releases y una rama `dist`, sin índice de paquetes | 🟡 | 2026-10-13 | 👤 |
-| [ADR-030](05_versionado_y_distribucion.md#adr-030) | Liberación automatizada desde el repositorio personal con GitHub Actions | 🟡 | 2026-10-13 | 👤 |
-| [ADR-031](05_versionado_y_distribucion.md#adr-031) | La rama `dist` guarda una carpeta por versión | 🟡 | 2026-10-13 | 👤 |
-| [ADR-032](05_versionado_y_distribucion.md#adr-032) | Se mantienen los wheels para Python 3.9 | 🟡 | 2026-10-13 | 👤 |
-| [ADR-033](05_versionado_y_distribucion.md#adr-033) | La documentación del integrador muestra solo la instalación de wheels | 🟡 | 2026-10-13 | 👤 |
+| [ADR-026](05_versionado_y_distribucion.md#adr-026) | Publicar versiones ofuscadas con Cython en wheels por plataforma | ✅ | 2026-10-13 | 👤 |
+| [ADR-027](05_versionado_y_distribucion.md#adr-027) | Sin archivos de tipos `.pyi` en los wheels | ✅ | 2026-10-13 | 👤 |
+| [ADR-028](05_versionado_y_distribucion.md#adr-028) | Configuración de build en `packaging/` del repositorio principal | ✅ | 2026-10-13 | 👤 |
+| [ADR-029](05_versionado_y_distribucion.md#adr-029) | Distribuir por GitHub Releases y una rama `dist`, sin índice de paquetes | ✅ | 2026-10-13 | 👤 |
+| [ADR-030](05_versionado_y_distribucion.md#adr-030) | Liberación automatizada desde el repositorio personal con GitHub Actions | ✅ | 2026-10-13 | 👤 |
+| [ADR-031](05_versionado_y_distribucion.md#adr-031) | La rama `dist` guarda una carpeta por versión | ✅ | 2026-10-13 | 👤 |
+| [ADR-032](05_versionado_y_distribucion.md#adr-032) | Se mantienen los wheels para Python 3.9 | ✅ | 2026-10-13 | 👤 |
+| [ADR-033](05_versionado_y_distribucion.md#adr-033) | La documentación del integrador muestra solo la instalación de wheels | ✅ | 2026-10-13 | 👤 |
 
 ---
 

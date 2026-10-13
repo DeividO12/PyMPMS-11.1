@@ -7,14 +7,14 @@
 | ID | Decisión | Estado |
 |---|---|:---:|
 | [ADR-025](#adr-025) | Versión derivada del tag de git (setuptools-scm); primera versión `v1.0.0` | ✅ |
-| [ADR-026](#adr-026) | Publicar versiones ofuscadas con Cython en wheels por plataforma | 🟡 |
-| [ADR-027](#adr-027) | Sin archivos de tipos `.pyi` en los wheels | 🟡 |
-| [ADR-028](#adr-028) | Configuración de build en `packaging/` del repositorio principal | 🟡 |
-| [ADR-029](#adr-029) | Distribuir por GitHub Releases y una rama `dist`, sin índice de paquetes | 🟡 |
-| [ADR-030](#adr-030) | Liberación automatizada desde el repositorio personal con GitHub Actions | 🟡 |
-| [ADR-031](#adr-031) | La rama `dist` guarda una carpeta por versión | 🟡 |
-| [ADR-032](#adr-032) | Se mantienen los wheels para Python 3.9 | 🟡 |
-| [ADR-033](#adr-033) | La documentación del integrador muestra solo la instalación de wheels | 🟡 |
+| [ADR-026](#adr-026) | Publicar versiones ofuscadas con Cython en wheels por plataforma | ✅ |
+| [ADR-027](#adr-027) | Sin archivos de tipos `.pyi` en los wheels | ✅ |
+| [ADR-028](#adr-028) | Configuración de build en `packaging/` del repositorio principal | ✅ |
+| [ADR-029](#adr-029) | Distribuir por GitHub Releases y una rama `dist`, sin índice de paquetes | ✅ |
+| [ADR-030](#adr-030) | Liberación automatizada desde el repositorio personal con GitHub Actions | ✅ |
+| [ADR-031](#adr-031) | La rama `dist` guarda una carpeta por versión | ✅ |
+| [ADR-032](#adr-032) | Se mantienen los wheels para Python 3.9 | ✅ |
+| [ADR-033](#adr-033) | La documentación del integrador muestra solo la instalación de wheels | ✅ |
 | [Flujo resultante](#flujo) | Cómo encajan ADR-025 a ADR-033 | — |
 
 ---
@@ -51,7 +51,7 @@
 
 | Estado | Fecha | Decidido por | Evidencia |
 |---|---|---|---|
-| 🟡 Aceptada, pendiente de implementar | 2026-10-13 | 👤 Usuario | Prueba de concepto del 2026-10-13 (abajo); antecedente: `pymlii` (`packaging/README.md`) |
+| ✅ Aceptada e implementada | 2026-10-13 | 👤 Usuario | Prueba de concepto del 2026-10-13 (abajo); antecedente: `pymlii` (`packaging/README.md`) |
 
 **Contexto.** Se desarrolla y mantiene el código fuente, pero se quieren publicar versiones en las que el código no sea legible. Se instala en Linux y Windows, de Python 3.9 a 3.13.
 
@@ -97,7 +97,7 @@
 
 | Estado | Fecha | Decidido por | Evidencia |
 |---|---|---|---|
-| 🟡 Aceptada, pendiente de implementar | 2026-10-13 | 👤 Usuario | — |
+| ✅ Aceptada e implementada | 2026-10-13 | 👤 Usuario | — |
 
 **Contexto.** Al compilar se pierde la información de tipos para el autocompletado de los editores. Se propuso generar `.pyi` con las firmas públicas.
 
@@ -112,7 +112,7 @@
 
 | Estado | Fecha | Decidido por | Evidencia |
 |---|---|---|---|
-| 🟡 Aceptada, pendiente de implementar | 2026-10-13 | 👤 Usuario | Mismo esquema que `pymlii` (`packaging/build_release.py`) |
+| ✅ Aceptada e implementada | 2026-10-13 | 👤 Usuario | Mismo esquema que `pymlii` (`packaging/build_release.py`) |
 
 **Contexto.** No se quiere subir código Cython a git. No es posible crear un repositorio aparte solo para el build. Se planteó usar una rama dedicada.
 
@@ -135,7 +135,7 @@
 
 | Estado | Fecha | Decidido por | Evidencia |
 |---|---|---|---|
-| 🟡 Aceptada, pendiente de implementar | 2026-10-13 | 👤 Usuario | Verificaciones de acceso documentadas en `pymlii` (`packaging/README.md`, 2026-08-21) |
+| ✅ Aceptada e implementada | 2026-10-13 | 👤 Usuario | Verificaciones de acceso documentadas en `pymlii` (`packaging/README.md`, 2026-08-21) |
 
 **Contexto.** No hay índice de paquetes privado, y siempre es SYZ quien instala la librería.
 
@@ -167,7 +167,7 @@ No se publica el paquete con el código fuente (sdist).
 
 | Estado | Fecha | Decidido por | Evidencia |
 |---|---|---|---|
-| 🟡 Aceptada, pendiente de implementar | 2026-10-13 | 👤 Usuario | `gh run list`: el CI corrió en verde en `DeividO12/PyMPMS-11.1` **y** en `sistemasSYZ/PyMPMS-11.1` (2026-10-13) |
+| ✅ Aceptada e implementada | 2026-10-13 | 👤 Usuario | `gh run list`: el CI corrió en verde en `DeividO12/PyMPMS-11.1` **y** en `sistemasSYZ/PyMPMS-11.1` (2026-10-13) |
 
 **Contexto.** En `pymlii` la liberación es manual porque GitHub Actions no se ejecuta en ese repositorio. Aquí se comprobó que Actions sí funciona en los dos repositorios.
 
@@ -186,7 +186,7 @@ El workflow solo se ejecuta en el repositorio personal (condición sobre `github
 | Token de acceso con escritura en `sistemasSYZ/PyMPMS-11.1`, guardado como secreto `SYZ_RELEASE_TOKEN` del repositorio personal. **Clásico con `repo` y `workflow`**: la cuenta es colaboradora externa de la organización y no puede usar tokens de grano fino sobre sus repositorios privados (ver [`packaging/README.md`](../../packaging/README.md#configuracion)). Configurado el 2026-10-13. | Usuario ✅ |
 | Unos 25 minutos de Actions por versión (los de Windows cuentan doble); cabe en los 2000 minutos mensuales del plan gratuito para repos privados | — |
 
-**Implementación.** [`packaging/`](../../packaging/README.md), [`release.yml`](../../.github/workflows/release.yml) y [`mirror.yml`](../../.github/workflows/mirror.yml). Pasa a ✅ con la primera publicación real.
+**Implementación.** [`packaging/`](../../packaging/README.md), [`release.yml`](../../.github/workflows/release.yml) y [`mirror.yml`](../../.github/workflows/mirror.yml). Publicada `v1.1.0` el 2026-10-13 (ejecución `38452932807`): Release y rama `dist/v1.1.0/` en `sistemasSYZ/PyMPMS-11.1` con 10 wheels; instalación verificada desde SYZ en Python 3.9, 3.12 y 3.13 (Windows) y por el CI en Linux.
 
 **Consecuencias.** El único paso manual de una versión es crear el tag y hacer push. El espejo pasa a funcionar también para cambios hechos desde la web de GitHub.
 
@@ -197,7 +197,7 @@ El workflow solo se ejecuta en el repositorio personal (condición sobre `github
 
 | Estado | Fecha | Decidido por | Evidencia |
 |---|---|---|---|
-| 🟡 Aceptada, pendiente de implementar | 2026-10-13 | 👤 Usuario (antes [PEND-1](06_pendientes.md#pend-1)) | — |
+| ✅ Aceptada e implementada | 2026-10-13 | 👤 Usuario (antes [PEND-1](06_pendientes.md#pend-1)) | — |
 
 **Contexto.** `pymlii` rehace su rama `dist/latest` en cada versión, así que solo la última se instala con un único comando.
 
@@ -217,7 +217,7 @@ El workflow solo se ejecuta en el repositorio personal (condición sobre `github
 
 | Estado | Fecha | Decidido por | Evidencia |
 |---|---|---|---|
-| 🟡 Aceptada, pendiente de implementar | 2026-10-13 | 👤 Usuario (antes [PEND-2](06_pendientes.md#pend-2)) | Verificado el 2026-10-13: cibuildwheel 4.3.1 lista `cp39-win_amd64` y `cp39-manylinux_x86_64`; Cython 3.3.0 publica wheel `cp39` |
+| ✅ Aceptada e implementada | 2026-10-13 | 👤 Usuario (antes [PEND-2](06_pendientes.md#pend-2)) | Verificado el 2026-10-13: cibuildwheel 4.3.1 lista `cp39-win_amd64` y `cp39-manylinux_x86_64`; Cython 3.3.0 publica wheel `cp39` |
 
 **Contexto.** Python 3.9 ya no recibe soporte oficial; podía ocurrir que las herramientas de compilación lo hubieran retirado.
 
@@ -232,13 +232,13 @@ El workflow solo se ejecuta en el repositorio personal (condición sobre `github
 
 | Estado | Fecha | Decidido por | Evidencia |
 |---|---|---|---|
-| 🟡 Aceptada, pendiente de implementar | 2026-10-13 | 👤 Usuario (antes [PEND-3](06_pendientes.md#pend-3)) | — |
+| ✅ Aceptada e implementada | 2026-10-13 | 👤 Usuario (antes [PEND-3](06_pendientes.md#pend-3)) | — |
 
 **Contexto.** Hoy el README y la documentación API indican `pip install "pympms-11-1 @ git+https://…"`, que instala el código fuente: contradice el objetivo de la distribución ofuscada en los equipos de destino.
 
 **Decisión.** El README y la documentación API muestran solo la instalación de wheels (desde el Release o la rama `dist`). La instalación desde git o desde una copia local queda en la sección de desarrollo.
 
-**Consecuencias.** La documentación se actualiza cuando exista la primera versión con wheels publicados.
+**Consecuencias.** Aplicado en `v1.1.0`: el README y la documentación API muestran solo la instalación de wheels; la instalación desde el código fuente está en la sección de desarrollo del README.
 
 ---
 

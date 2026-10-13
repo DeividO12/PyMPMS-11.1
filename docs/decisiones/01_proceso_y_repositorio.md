@@ -91,11 +91,16 @@
 
 | Estado | Fecha | Decidido por | Evidencia |
 |---|---|---|---|
-| ✅ Aceptada | 2026-10-13 | 👤 Usuario | commit `7e5a41c` (README › Repositorios y versiones) |
+| ✅ Aceptada (mecanismo actualizado el 2026-10-13) | 2026-10-13 | 👤 Usuario | commit `7e5a41c`; espejo automático desde `bfee9b9` |
 
 **Contexto.** El código estaba en `DeividO12/PyMPMS-11.1` (cuenta personal), pero debe estar disponible en la organización `sistemasSYZ` para instalarse desde allí.
 
-**Decisión.** Se trabaja en el repositorio personal y se replica a `sistemasSYZ/PyMPMS-11.1`. Mientras no exista la automatización de [ADR-030](05_versionado_y_distribucion.md#adr-030), el espejo se mantiene con **dos URLs de push** en `origin`: cada `git push origin` publica en ambos repositorios.
+**Decisión.** Se trabaja en el repositorio personal y se replica a `sistemasSYZ/PyMPMS-11.1`.
+
+| Periodo | Mecanismo del espejo |
+|---|---|
+| 2026-10-13 (inicio) | Dos URLs de push en `origin` del clon local |
+| Desde 2026-10-13 | Workflow [`mirror.yml`](../../.github/workflows/mirror.yml) con el token `SYZ_RELEASE_TOKEN` ([ADR-030](05_versionado_y_distribucion.md#adr-030)). El push doble local se retiró. |
 
 **Alternativas consideradas.**
 | Alternativa | Por qué no (por ahora) |
@@ -104,9 +109,10 @@
 | GitHub Action que replica | Requiere un token; se adoptará con la liberación automática ([ADR-030](05_versionado_y_distribucion.md#adr-030)) |
 
 **Consecuencias.**
-- El push doble solo existe en el clon configurado; en otro equipo hay que repetir dos comandos (documentados en el README).
-- Lo que se edite desde la web de GitHub no se replica hasta el siguiente push.
-- Existe además un remoto `syz` solo para verificar el espejo.
+- El espejo replica cualquier push o borrado en el repositorio personal, venga de cualquier equipo o de la web; no hay que configurar nada en otros clones.
+- El espejo es exacto: lo que se suba directamente a SYZ en una rama replicada se sobrescribe. La rama `dist` solo existe en SYZ.
+- Si el token vence, el espejo falla con un diagnóstico ([`packaging/README.md`](../../packaging/README.md#problemas)).
+- El remoto local `syz` se conserva solo para verificar el espejo.
 
 ---
 
