@@ -6,6 +6,8 @@ on:
 
 jobs:
   test:
+    # Solo en el repositorio de trabajo: el espejo de SYZ no repite el CI (ADR-030).
+    if: github.repository == 'DeividO12/PyMPMS-11.1'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -18,6 +20,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: pip install -e ".[dev,tables]"
-      - run: ruff check src tests scripts
+      - run: ruff check src tests scripts packaging
       - run: mypy src
       - run: pytest

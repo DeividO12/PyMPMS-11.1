@@ -192,7 +192,7 @@ Todas las funciones exigen argumentos por nombre ([Conceptos](01_conceptos.md#ar
 >>> correct_observed_to_base(823.7, 80.3, 0, "A")
 Traceback (most recent call last):
     ...
-TypeError: correct_observed_to_base() takes 0 positional arguments but 4 were given
+TypeError: correct_observed_to_base() takes ... positional arguments ...
 
 ```
 

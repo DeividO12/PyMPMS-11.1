@@ -148,6 +148,10 @@ git tag -a v1.1.0 -m "v1.1.0 — resumen"
 git push origin master v1.1.0      # llega a ambos repositorios
 ```
 
+### Versiones compiladas
+
+Las versiones que se instalan en los equipos se publican compiladas con Cython (wheels para Python 3.9–3.13, Windows y Linux) mediante GitHub Actions al subir un tag. Proceso, configuración y recuperación: [`packaging/README.md`](packaging/README.md).
+
 ### Pruebas y calidad
 
 ```bash
