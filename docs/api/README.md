@@ -33,12 +33,23 @@ Guía para **integrar** la librería en una aplicación: qué funciones existen,
 | Dependencias de ejecución | Ninguna (solo biblioteca estándar) |
 | Extra `tables` | `numpy ≥ 1.24`, `pandas ≥ 2.0` — solo para `scripts/generate_tables.py` |
 
-Desde una copia del repositorio (la librería es de uso interno y no está publicada en PyPI):
+La librería es de uso interno y no está publicada en PyPI. Se instala desde el repositorio de **SYZ** indicando la versión (tag):
 
 ```bash
-pip install .                 # solo la librería
-pip install ".[tables]"       # + generador de tablas CSV
+pip install "pympms-11-1 @ git+https://github.com/sistemasSYZ/PyMPMS-11.1.git@v1.0.0"
+pip install "pympms-11-1[tables] @ git+https://github.com/sistemasSYZ/PyMPMS-11.1.git@v1.0.0"   # + generador de tablas
 ```
+
+En un `requirements.txt`:
+
+```text
+pympms-11-1 @ git+https://github.com/sistemasSYZ/PyMPMS-11.1.git@v1.0.0
+```
+
+> [!NOTE]
+> El repositorio es privado: el equipo que instala necesita acceso de lectura a `sistemasSYZ/PyMPMS-11.1` (credenciales de git o token) y tener `git` instalado. Fije siempre un tag (`@v1.0.0`); sin él se instala la última versión de la rama por defecto.
+
+Desde una copia local del repositorio: `pip install .` (o `pip install ".[tables]"`).
 
 Comprobación:
 

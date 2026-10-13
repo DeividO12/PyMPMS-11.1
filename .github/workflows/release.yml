@@ -1,0 +1,86 @@
+# Liberación automatizada (docs/decisiones ADR-026 a ADR-033, packaging/README.md).
+#
+# - Push de un tag vX.Y.Z: valida, compila los 10 wheels y publica en sistemasSYZ.
+# - Ejecución manual (workflow_dispatch): valida y compila, sin publicar
+#   (sirve para probar el build en cualquier rama).
+#
+# Solo corre en el repositorio personal: el espejo de SYZ recibe el mismo tag y no debe repetirlo.
+name: release
+
+on:
+  push:
+    tags: ["v[0-9]+.[0-9]+.[0-9]+"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  checks:
+    if: github.repository == 'DeividO12/PyMPMS-11.1'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev,tables]"
+      - run: ruff check src tests scripts packaging
+      - run: mypy src
+      - run: pytest
+
+  wheels:
+    needs: checks
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # setuptools-scm necesita los tags
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install "setuptools-scm>=8"
+      - name: Preparar el staging de compilación
+        run: python packaging/build_wheels.py --stage-only
+      - name: Compilar y probar los wheels (Python 3.9-3.13)
+        uses: pypa/cibuildwheel@v4.3.1
+        with:
+          package-dir: packaging/_stage
+          output-dir: wheelhouse
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wheels-${{ runner.os }}
+          path: wheelhouse/*.whl
+          if-no-files-found: error
+
+  publish:
+    needs: wheels
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false   # publish.py hace push a SYZ con su propio token
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: wheels-*
+          merge-multiple: true
+          path: wheelhouse
+      - name: Publicar en sistemasSYZ (Release + rama dist)
+        env:
+          SYZ_TOKEN: ${{ secrets.SYZ_RELEASE_TOKEN }}
+        run: python packaging/publish.py --tag "${GITHUB_REF_NAME}" --wheels wheelhouse

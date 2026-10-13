@@ -1,0 +1,65 @@
+# Espejo del repositorio personal en sistemasSYZ (docs/decisiones ADR-005 y ADR-030).
+#
+# Replica cada push (ramas y tags) y cada borrado. El espejo es exacto: lo que se
+# suba directamente a sistemasSYZ en una rama replicada se sobrescribe.
+# Excepción: la rama `dist` solo existe en SYZ (la escribe packaging/publish.py).
+name: mirror
+
+on:
+  push:
+    branches: ["**"]
+    tags: ["**"]
+  delete:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mirror-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    if: github.repository == 'DeividO12/PyMPMS-11.1'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # Sin esto, checkout deja en git una cabecera con el GITHUB_TOKEN de este
+          # repositorio que se envía a todo github.com y anula el token de SYZ.
+          persist-credentials: false
+      - name: Replicar en sistemasSYZ/PyMPMS-11.1
+        env:
+          TOKEN: ${{ secrets.SYZ_RELEASE_TOKEN }}
+          EVENT: ${{ github.event_name }}
+          REF_TYPE: ${{ github.event.ref_type }}
+          DELETED_REF: ${{ github.event.ref }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::error::Falta el secreto SYZ_RELEASE_TOKEN (ver packaging/README.md)"
+            exit 1
+          fi
+          url="https://x-access-token:${TOKEN}@github.com/sistemasSYZ/PyMPMS-11.1.git"
+          if [ "$EVENT" = "delete" ]; then
+            if [ "$REF_TYPE" = "tag" ]; then ref="refs/tags/$DELETED_REF"; else ref="refs/heads/$DELETED_REF"; fi
+            git push "$url" --delete "$ref" || echo "::warning::$ref no existía en SYZ"
+          else
+            git push --force "$url" "${GITHUB_SHA}:${GITHUB_REF}"
+          fi
+      - name: Diagnóstico del token (solo si falla)
+        if: failure()
+        env:
+          TOKEN: ${{ secrets.SYZ_RELEASE_TOKEN }}
+        run: |
+          # No imprime el token: solo a quién pertenece, sus alcances y si la organización exige SSO.
+          h=$(mktemp)
+          code=$(curl -s -o user.json -D "$h" -w '%{http_code}' -H "Authorization: token $TOKEN" https://api.github.com/user)
+          echo "GET /user -> HTTP $code"
+          echo "Usuario del token: $(python3 -c 'import json;print(json.load(open("user.json")).get("login"))')"
+          grep -iE '^x-oauth-scopes:' "$h" || echo "x-oauth-scopes: (sin cabecera: no es un token clásico)"
+          code=$(curl -s -o /dev/null -D "$h" -w '%{http_code}' -H "Authorization: token $TOKEN" \
+            https://api.github.com/repos/sistemasSYZ/PyMPMS-11.1)
+          echo "GET /repos/sistemasSYZ/PyMPMS-11.1 -> HTTP $code"
+          grep -iE '^x-github-sso:' "$h" || echo "x-github-sso: (sin cabecera: la organización no exige SSO a este token)"
+          echo "Guía: packaging/README.md §3 y §8"

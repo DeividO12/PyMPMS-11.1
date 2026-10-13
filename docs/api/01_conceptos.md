@@ -49,7 +49,7 @@ Todas las funciones públicas exigen los argumentos **por nombre**. Así no se p
 >>> correct_observed_to_base(823.7, 80.3, 0, "A")
 Traceback (most recent call last):
     ...
-TypeError: correct_observed_to_base() takes 0 positional arguments but 4 were given
+TypeError: correct_observed_to_base() takes ... positional arguments ...
 >>> correct_observed_to_base(rho_o=823.7, t_o=80.3, p_o=0, commodity_type="A").ctpl_rounded
 0.98997
 
