@@ -85,10 +85,11 @@ build = "{PYTHON_BUILDS}"
 skip = "*-musllinux_*"
 build-frontend = "build"
 test-requires = ["pytest"]
-# Se prueba el wheel instalado, nunca el código del staging.
+# Se prueba el wheel instalado, nunca el código del staging. {{package}} = el staging
+# (package-dir); {{project}} sería la raíz del repositorio.
 test-command = [
-    "python {{project}}/check_wheel.py installed",
-    "pytest {{project}}/tests {{project}}/docs/api {{project}}/README.md",
+    "python {{package}}/check_wheel.py installed",
+    "pytest {{package}}/tests {{package}}/docs/api {{package}}/README.md",
 ]
 
 [tool.cibuildwheel.linux]
