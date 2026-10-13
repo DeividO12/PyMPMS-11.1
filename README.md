@@ -102,6 +102,7 @@ Mismo cálculo en el sistema métrico, con presión en kPa (norma 11.1.7.2, ejem
 | [Guías por caso de uso](docs/api/02_guias.md) | Recetas por producto y sistema de unidades |
 | [Errores](docs/api/08_errores.md) | Excepciones y cómo manejarlas |
 | [CHANGELOG](CHANGELOG.md) | Cambios entre versiones (incluidos los incompatibles) |
+| [Registro de decisiones](docs/decisiones/README.md) | Mantenedores: por qué el proyecto es como es (norma, API, versionado, distribución) |
 | [Informe de auditoría 2026-10-09](docs/informe_2026-10-09_1420/README.md) | Mantenedores: auditoría de código y verificación contra la norma |
 
 ---
