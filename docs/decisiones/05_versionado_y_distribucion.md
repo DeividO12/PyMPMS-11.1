@@ -208,7 +208,7 @@ El workflow solo se ejecuta en el repositorio personal (condición sobre `github
 |---|---|
 | Solo la última versión (como `pymlii`) | Para fijar una versión anterior en un despliegue hacen falta dos pasos |
 
-**Consecuencias.** La rama crece con cada versión. Los wheels de esta librería son pequeños; el tamaño real se mide en la primera publicación.
+**Consecuencias.** La rama crece con cada versión. Medido el 2026-10-13 en el build de prueba: **~4.5 MB por versión** (10 wheels de 406 a 489 KB).
 
 ---
 
