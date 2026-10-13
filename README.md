@@ -36,7 +36,23 @@ La librería reproduce los ejemplos resueltos de la norma (11.1.5 a 11.1.7) y lo
 | Python | 3.9 o superior (probado en 3.9, 3.12 y 3.13) |
 | Dependencias | Ninguna. `numpy` y `pandas` solo para el generador de tablas (extra `tables`) |
 
-La librería es de uso interno y no está publicada en PyPI. Desde una copia del repositorio:
+La librería es de uso interno y no está publicada en PyPI. Se instala desde el repositorio de **SYZ** indicando la versión (tag):
+
+```bash
+pip install "pympms-11-1 @ git+https://github.com/sistemasSYZ/PyMPMS-11.1.git@v1.0.0"
+pip install "pympms-11-1[tables] @ git+https://github.com/sistemasSYZ/PyMPMS-11.1.git@v1.0.0"   # + generador de tablas
+```
+
+En un `requirements.txt`:
+
+```text
+pympms-11-1 @ git+https://github.com/sistemasSYZ/PyMPMS-11.1.git@v1.0.0
+```
+
+> [!NOTE]
+> El repositorio es privado: el equipo que instala necesita acceso de lectura a `sistemasSYZ/PyMPMS-11.1` (credenciales de git o token) y tener `git` instalado. Fije siempre un tag (`@v1.0.0`); sin él se instala la última versión de la rama por defecto.
+
+Desde una copia local del repositorio:
 
 ```bash
 pip install .                 # librería
@@ -108,6 +124,30 @@ Mismo cálculo en el sistema métrico, con presión en kPa (norma 11.1.7.2, ejem
 
 <a id="desarrollo"></a>
 ## Desarrollo
+
+### Repositorios y versiones
+
+| Repositorio | Uso |
+|---|---|
+| [`DeividO12/PyMPMS-11.1`](https://github.com/DeividO12/PyMPMS-11.1) | Repositorio de trabajo (`origin`) |
+| [`sistemasSYZ/PyMPMS-11.1`](https://github.com/sistemasSYZ/PyMPMS-11.1) | Espejo de la organización: **desde aquí se instala** |
+
+Cada `git push origin` publica en los dos repositorios. Para configurarlo en un clon nuevo:
+
+```bash
+git remote set-url --add --push origin https://github.com/DeividO12/PyMPMS-11.1.git
+git remote set-url --add --push origin https://github.com/sistemasSYZ/PyMPMS-11.1.git
+git remote -v        # deben aparecer dos líneas (push) para origin
+```
+
+La versión se deriva del tag de git (setuptools-scm). Para publicar una versión:
+
+```bash
+git tag -a v1.1.0 -m "v1.1.0 — resumen"
+git push origin master v1.1.0      # llega a ambos repositorios
+```
+
+### Pruebas y calidad
 
 ```bash
 pytest                              # pruebas, ejemplos de la norma y ejemplos de la documentación
